@@ -1,0 +1,8 @@
+asset:        favicon.svg
+title:        Nova Effect web app icon (favicon)
+author:       Nova Effect contributors (drawing by the project owner in Nova Foods)
+source:       original work
+license:      MIT OR Apache-2.0
+license-file: assets/app-icon/LICENSE.txt
+added:        2026-10-02 by Nova Effect contributors (Claude agent, app icon)
+notes:        Copy of assets/app-icon/novaeffect-small.svg (the lighter vector trace of the app icon). Replaces the earlier code-drawn split-square mark.

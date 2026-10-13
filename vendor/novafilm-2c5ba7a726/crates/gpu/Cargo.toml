@@ -1,0 +1,26 @@
+[package]
+name = "novafilm-gpu"
+description = "wgpu compositor: YUV/RGB layer sampling, linear-light premultiplied compositing in WGSL"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+novafilm-color = { workspace = true }
+novafilm-frame = { workspace = true }
+novafilm-geom = { workspace = true }
+novafilm-render = { workspace = true }
+wgpu = { version = "30", default-features = false, features = ["wgsl"] }
+log = { workspace = true }
+rayon = { workspace = true }
+
+[dev-dependencies]
+pollster = "0.4"
+wgpu = { version = "30", features = ["wgsl", "metal", "vulkan", "dx12", "gles"] }
+novafilm-media = { workspace = true }
+novafilm-project = { workspace = true }
+novafilm-time = { workspace = true }

@@ -1,0 +1,38 @@
+[package]
+name = "novaeffect-export"
+description = "Render Queue jobs and output modules: H.264 MP4 (+AAC), ProRes and uncompressed MOV (+PCM) via NovaFilm, HEVC / AV1 MP4 (+AAC) and WebM (VP9 or AV1 + Opus) via NovaEffect encoders, PNG/JPEG/TIFF/EXR sequences, animated GIF, WAV/AIFF"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+novaeffect-time = { workspace = true }
+novaeffect-project = { workspace = true }
+novaeffect-raster = { workspace = true }
+novaeffect-render = { workspace = true }
+novafilm-h264enc = { workspace = true }
+novafilm-prores = { workspace = true }
+novafilm-aac = { workspace = true }
+novafilm-isobmff = { workspace = true }
+novaeffect-opusenc = { workspace = true }
+novaeffect-vp9enc = { workspace = true }
+novaeffect-hevcenc = { workspace = true }
+novaeffect-av1enc = { workspace = true }
+image = { workspace = true, features = ["png", "jpeg", "tiff", "exr"] }
+gif = { workspace = true }
+rayon = { workspace = true }
+web-time = { workspace = true }
+thiserror = { workspace = true }
+log = { workspace = true }
+
+[dev-dependencies]
+novaeffect-media = { workspace = true }
+novaeffect-effects = { workspace = true }
+novaeffect-color = { workspace = true }
+novafilm-opus = { workspace = true }
+novafilm-vp9 = { workspace = true }
+novaeffect-keyframe = { workspace = true }

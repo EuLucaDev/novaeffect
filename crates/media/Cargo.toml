@@ -1,0 +1,33 @@
+[package]
+name = "novaeffect-media"
+description = "Footage import: probing, stills, image sequences, video and audio via NovaFilm's pure-Rust codecs, memory-budgeted frame cache"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+novaeffect-time = { workspace = true }
+novaeffect-project = { workspace = true }
+novaeffect-raster = { workspace = true }
+novaeffect-render = { workspace = true }
+novaeffect-psd = { workspace = true }
+novaeffect-svg = { workspace = true }
+novaeffect-pdf = { workspace = true }
+novaeffect-model = { workspace = true }
+novafilm-codecs = { workspace = true }
+novafilm-media = { workspace = true }
+novafilm-isobmff = { workspace = true }
+novafilm-frame = { workspace = true }
+novafilm-color = { workspace = true }
+novafilm-time = { workspace = true }
+exr = { workspace = true }
+gif = { workspace = true }
+image = { workspace = true, features = ["gif", "webp", "tiff", "bmp", "exr", "tga", "hdr"] }
+rayon = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+log = { workspace = true }

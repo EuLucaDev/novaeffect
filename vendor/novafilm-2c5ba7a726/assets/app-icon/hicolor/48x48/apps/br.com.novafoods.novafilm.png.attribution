@@ -1,0 +1,8 @@
+asset:        br.com.novafoods.novafilm.png
+title:        Nova Film app icon, Linux hicolor theme 48 px
+author:       Brandon Thomas (Nova Film owner), for the Nova Film project
+source:       original work (drawn by the owner in Nova Foods, then vectorised)
+license:      MIT OR Apache-2.0
+license-file: assets/app-icon/LICENSE.txt
+added:        2026-10-02 by Claude (agent) for Brandon Thomas
+notes:        Rendered from novafilm.svg with resvg by packaging/icons.sh.

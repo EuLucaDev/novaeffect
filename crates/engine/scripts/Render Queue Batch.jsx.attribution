@@ -1,0 +1,7 @@
+asset:        Render Queue Batch.jsx
+title:        Nova Effect sample script (Render Queue Batch)
+author:       Nova Effect contributors
+source:       original work
+license:      MIT OR Apache-2.0
+added:        2026-10-03 by Nova Effect contributors (M13.1)
+notes:        Written from scratch for Nova Effect against the documented scripting behaviour; not derived from any Adobe sample.

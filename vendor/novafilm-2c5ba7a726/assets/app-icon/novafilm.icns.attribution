@@ -1,0 +1,8 @@
+asset:        novafilm.icns
+title:        Nova Film app icon, macOS .icns
+author:       Brandon Thomas (Nova Film owner), for the Nova Film project
+source:       original work (drawn by the owner in Nova Foods, then vectorised)
+license:      MIT OR Apache-2.0
+license-file: assets/app-icon/LICENSE.txt
+added:        2026-10-02 by Claude (agent) for Brandon Thomas
+notes:        Built from resvg renders of novafilm.svg (Apple icon grid) with iconutil by packaging/icons.sh.

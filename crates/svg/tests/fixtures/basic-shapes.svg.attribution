@@ -1,0 +1,7 @@
+asset:        basic-shapes.svg
+title:        SVG test fixture: basic shapes, groups and transforms
+author:       Nova Effect contributors
+source:       original work
+license:      MIT OR Apache-2.0
+added:        2026-10-02 by Nova Effect contributors (Claude agent, SVG import)
+notes:        Hand-written for the novaeffect-svg parser and Create Shapes from Vector Layer tests.

@@ -1,0 +1,25 @@
+[package]
+name = "novaeffect-interchange"
+description = "Premiere Pro interop through timeline interchange: Final Cut Pro 7 XML (xmeml), FCPXML, OpenTimelineIO and CMX 3600 EDL sequences to and from compositions (via novafilm-interchange)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+novaeffect-time = { workspace = true }
+novaeffect-color = { workspace = true }
+novaeffect-keyframe = { workspace = true }
+novaeffect-project = { workspace = true }
+novafilm-interchange = { workspace = true }
+novafilm-project = { workspace = true }
+novafilm-media = { workspace = true }
+novafilm-time = { workspace = true }
+novafilm-geom = { workspace = true }
+novafilm-color = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }

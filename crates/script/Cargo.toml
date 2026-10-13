@@ -1,0 +1,29 @@
+[package]
+name = "novaeffect-script"
+description = "NovaEffect scripting: JavaScript (boa) with an After Effects-style object model (app, project, CompItem, Layer, Property…) over the engine's undoable commands"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+novaeffect-engine = { workspace = true }
+novaeffect-project = { workspace = true }
+novaeffect-keyframe = { workspace = true }
+novaeffect-time = { workspace = true }
+novaeffect-render = { workspace = true }
+novaeffect-path = { workspace = true }
+serde_json = { workspace = true }
+boa_engine = { workspace = true }
+web-time = { workspace = true }
+
+# On the web, boa's clock and Math.random need the browser (getrandom `wasm_js`, web-time).
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+boa_engine = { workspace = true, features = ["js"] }
+
+[dev-dependencies]
+novaeffect-expr = { workspace = true }
+novaeffect-psd = { workspace = true }

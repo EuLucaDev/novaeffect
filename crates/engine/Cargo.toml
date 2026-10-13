@@ -1,0 +1,39 @@
+[package]
+name = "novaeffect-engine"
+description = "The NovaEffect engine: session, undo history, editor state and the command registry every frontend (UI, CLI, control channel, MCP) dispatches through"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+novaeffect-time = { workspace = true }
+novaeffect-geom = { workspace = true }
+novaeffect-color = { workspace = true }
+novaeffect-keyframe = { workspace = true }
+novaeffect-project = { workspace = true }
+novaeffect-raster = { workspace = true }
+novaeffect-path = { workspace = true }
+novaeffect-text = { workspace = true }
+novaeffect-effects = { workspace = true }
+novaeffect-render = { workspace = true }
+novaeffect-segment = { workspace = true }
+novaeffect-track = { workspace = true }
+novaeffect-model = { workspace = true }
+novaeffect-lottie = { workspace = true }
+novaeffect-interchange = { workspace = true }
+novaeffect-psd = { workspace = true }
+kurbo = { workspace = true }
+novaeffect-svg = { workspace = true }
+novaeffect-pdf = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+log = { workspace = true }
+rayon = { workspace = true }
+image = { workspace = true }
+web-time = { workspace = true }
+exr = { workspace = true }

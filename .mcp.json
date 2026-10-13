@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "novaeffect": {
+      "command": "cargo",
+      "args": ["run", "--quiet", "--release", "-p", "novaeffect-cli", "--", "mcp", "--demo"]
+    },
+    "novaeffect-app": {
+      "command": "cargo",
+      "args": ["run", "--quiet", "--release", "-p", "novaeffect-cli", "--", "mcp", "--bridge", "9877"]
+    }
+  }
+}

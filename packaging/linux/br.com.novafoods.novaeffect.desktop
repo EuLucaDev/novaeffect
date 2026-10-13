@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=Nova Effect
+GenericName=Motion Graphics Editor
+Comment=Motion graphics and visual effects compositor
+Exec=novaeffect %F
+TryExec=novaeffect
+Icon=br.com.novafoods.novaeffect
+Terminal=false
+StartupNotify=true
+StartupWMClass=br.com.novafoods.novaeffect
+Categories=AudioVideo;Video;Graphics;2DGraphics;
+Keywords=motion;graphics;animation;compositor;effects;keyframe;vfx;

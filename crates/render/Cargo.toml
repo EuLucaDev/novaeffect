@@ -1,0 +1,28 @@
+[package]
+name = "novaeffect-render"
+description = "The CPU compositor: property evaluation, layer sources (solids, footage, text, shapes, precomps), masks, effects, track mattes, 2D/3D transforms, motion blur and blending"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+novaeffect-time = { workspace = true }
+novaeffect-geom = { workspace = true }
+novaeffect-color = { workspace = true }
+novaeffect-keyframe = { workspace = true }
+novaeffect-project = { workspace = true }
+novaeffect-raster = { workspace = true }
+novaeffect-path = { workspace = true }
+novaeffect-text = { workspace = true }
+novaeffect-effects = { workspace = true }
+lz4_flex = { version = "0.11", default-features = false, features = ["std", "safe-encode", "safe-decode", "checked-decode"] }
+novaeffect-model = { workspace = true }
+kurbo = { workspace = true }
+rayon = { workspace = true }
+web-time = { workspace = true }
+serde = { workspace = true }
+log = { workspace = true }

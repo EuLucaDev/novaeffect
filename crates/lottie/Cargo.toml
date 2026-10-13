@@ -1,0 +1,25 @@
+[package]
+name = "novaeffect-lottie"
+description = "Lottie JSON import and export: compositions, precomps, shape/solid/null/image/text layers, keyframes with temporal and spatial easing, masks, track mattes and a few effects"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+novaeffect-time = { workspace = true }
+novaeffect-color = { workspace = true }
+novaeffect-keyframe = { workspace = true }
+novaeffect-project = { workspace = true }
+novaeffect-path = { workspace = true }
+novaeffect-text = { workspace = true }
+novaeffect-effects = { workspace = true }
+kurbo = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+novaeffect-render = { workspace = true }

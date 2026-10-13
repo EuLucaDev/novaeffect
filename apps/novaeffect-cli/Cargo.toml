@@ -1,0 +1,25 @@
+[package]
+name = "novaeffect-cli"
+description = "NovaEffect headless CLI: render frames and sequences, run commands, MCP server"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lints]
+workspace = true
+
+[[bin]]
+name = "novaeffect-cli"
+path = "src/main.rs"
+
+[dependencies]
+novaeffect-engine = { workspace = true }
+novaeffect-host = { workspace = true }
+novaeffect-automation = { workspace = true }
+novaeffect-ui-egui = { workspace = true }
+novaeffect-render = { workspace = true }
+novaeffect-gpu = { workspace = true }
+novaeffect-time = { workspace = true }
+serde_json = { workspace = true }
+image = { workspace = true }
+cpu-time = "1"

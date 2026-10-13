@@ -1,0 +1,37 @@
+[package]
+name = "novaeffect-host"
+description = "Builds a fully wired NovaEffect session: media decoding (NovaFilm codecs), importer, the expression engine and scripting"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+novaeffect-engine = { workspace = true }
+novaeffect-project = { workspace = true }
+log = { workspace = true }
+novaeffect-media = { workspace = true }
+novaeffect-expr = { workspace = true }
+novaeffect-script = { workspace = true }
+novaeffect-export = { workspace = true }
+novaeffect-plugin = { workspace = true }
+
+# WebAssembly effect plug-ins run in wasmi on native builds.
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+novaeffect-plugin = { workspace = true, features = ["wasm"] }
+
+[dev-dependencies]
+serde_json = { workspace = true }
+novaeffect-psd = { workspace = true }
+novaeffect-svg = { workspace = true }
+novaeffect-pdf = { workspace = true }
+novaeffect-raster = { workspace = true }
+novaeffect-time = { workspace = true }
+novaeffect-interchange = { workspace = true }
+image = { workspace = true }
+gif = { workspace = true }
+exr = { workspace = true }
+rayon = { workspace = true }
