@@ -2,8 +2,8 @@
 //! (scale and move them in time and value), key-time snapping, and Alt-drag of a key group's
 //! first or last key in the timeline to scale the group in time. Edits are `keys.transform`.
 
-use novaeffect_engine::project::Comp;
 use egui::{Color32, Pos2, Rect, Sense, Stroke, StrokeKind, pos2, vec2};
+use novaeffect_engine::project::Comp;
 use serde_json::{Value, json};
 
 use super::timeline::TMap;

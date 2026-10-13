@@ -1,9 +1,9 @@
 //! Composition Settings: saving, picking and deleting your own presets (egui_kittest).
 
-use novaeffect_engine::Session;
-use novaeffect_ui_egui::{Dialog, NovaeffectApp};
 use egui::{Event, Key, Modifiers, PointerButton, Pos2, pos2};
 use egui_kittest::Harness;
+use novaeffect_engine::Session;
+use novaeffect_ui_egui::{Dialog, NovaeffectApp};
 use serde_json::json;
 
 fn harness() -> Harness<'static, NovaeffectApp> {

@@ -1,9 +1,9 @@
 //! The viewer on the GPU compositor (egui_kittest with wgpu): frames composited on the GPU match
 //! the CPU viewer. Skips without a GPU adapter (CI). Set `EC_SNAPSHOT_DIR` to keep PNGs.
 
+use egui_kittest::Harness;
 use novaeffect_engine::Session;
 use novaeffect_ui_egui::NovaeffectApp;
-use egui_kittest::Harness;
 use serde_json::json;
 
 fn settle(h: &mut Harness<'_, NovaeffectApp>) {

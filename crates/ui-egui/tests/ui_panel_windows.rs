@@ -1,10 +1,10 @@
 //! Multiple monitors (#486): a panel moves out of the main window into a native window of its
 //! own (Move Panel to New Window), which can be placed on another screen, and back.
+use egui::vec2;
+use egui_kittest::Harness;
 use novaeffect_engine::Session;
 use novaeffect_ui_egui::NovaeffectApp;
 use novaeffect_ui_egui::dock::{PanelKind, PanelWindow};
-use egui::vec2;
-use egui_kittest::Harness;
 use serde_json::json;
 
 fn invoke(app: &mut NovaeffectApp, ctx: &egui::Context, params: serde_json::Value) -> Result<serde_json::Value, String> {

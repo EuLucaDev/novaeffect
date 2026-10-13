@@ -8,10 +8,10 @@
 //! - **Paragraph** (text layers): the seven alignment buttons; "More" opens the Paragraph panel.
 //! - **Text Animation** (text layers): Add Animator menu.
 
+use egui::{Align2, Color32, Rect, Sense, Stroke, pos2, vec2};
 use novaeffect_engine::keyframe::{Justify, TextDoc, Value};
 use novaeffect_engine::project::{Layer, LayerSource, Property};
 use novaeffect_engine::render::EvalCtx;
-use egui::{Align2, Color32, Rect, Sense, Stroke, pos2, vec2};
 use serde_json::json;
 
 use crate::dock::PanelKind;

@@ -7,10 +7,10 @@
 use std::collections::HashMap;
 use std::sync::{Arc, Mutex};
 
+use egui::{Color32, Painter, Rect, Stroke, pos2};
 use novaeffect_engine::project::{ItemId, ItemKind, Layer, LayerSource, Project, Property};
 use novaeffect_engine::render::audio::db_to_gain;
 use novaeffect_engine::time::Tick;
-use egui::{Color32, Painter, Rect, Stroke, pos2};
 
 use super::timeline::TMap;
 use crate::NovaeffectApp;

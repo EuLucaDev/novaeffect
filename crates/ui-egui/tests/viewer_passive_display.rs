@@ -1,7 +1,7 @@
 //! A passive Composition viewer applies the same monitor conversion as the active one (#547).
+use egui::{Color32, Context, ImageData, RawInput, Rect, pos2, vec2};
 use novaeffect_engine::Session;
 use novaeffect_ui_egui::{NovaeffectApp, menus, panels::viewers};
-use egui::{Color32, Context, ImageData, RawInput, Rect, pos2, vec2};
 use serde_json::json;
 use std::collections::HashMap;
 

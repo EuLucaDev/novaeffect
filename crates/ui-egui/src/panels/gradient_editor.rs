@@ -12,9 +12,9 @@
 //! `dialog.gradient.location`, `dialog.gradient.opacity`, `dialog.gradient.color`,
 //! `dialog.gradient.delete`, `dialog.gradient.ok`, `dialog.gradient.cancel`.
 
+use egui::{Color32, Rect, Sense, Stroke, StrokeKind, pos2, vec2};
 use novaeffect_engine::keyframe::{Gradient, Value};
 use novaeffect_engine::project::{ItemId, LayerId};
-use egui::{Color32, Rect, Sense, Stroke, StrokeKind, pos2, vec2};
 use serde_json::{Value as Json, json};
 
 use crate::i18n::tr;

@@ -12,10 +12,10 @@
 //! Edge tools paint their strokes here (see [`super::roto_tool`]).
 
 use crate::i18n::{tr, tr_args};
+use egui::{Align2, Color32, Pos2, Rect, Sense, Stroke, StrokeKind, pos2, vec2};
 use novaeffect_engine::effects::paint;
 use novaeffect_engine::project::{Layer, LayerId};
 use novaeffect_engine::render::{EvalCtx, RenderOpts, Renderer};
-use egui::{Align2, Color32, Pos2, Rect, Sense, Stroke, StrokeKind, pos2, vec2};
 use serde_json::json;
 
 use crate::state::Tool;

@@ -1,11 +1,11 @@
 //! Trimming layers in the Timeline as in After Effects: the pointer over either end of a layer
 //! bar (a few points inside it or just outside) shows the trim cursor, and dragging that end
 //! moves the layer's In or Out point.
+use egui::{CursorIcon, Event, Modifiers, Pos2, pos2, vec2};
+use egui_kittest::Harness;
 use novaeffect_engine::Session;
 use novaeffect_engine::project::LayerId;
 use novaeffect_ui_egui::NovaeffectApp;
-use egui::{CursorIcon, Event, Modifiers, Pos2, pos2, vec2};
-use egui_kittest::Harness;
 use serde_json::json;
 
 /// A 10 s comp at 30 fps with a solid trimmed to 2–6 s and a 20 s precomp trimmed to 3–7 s (its

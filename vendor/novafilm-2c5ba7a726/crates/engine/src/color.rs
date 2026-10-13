@@ -348,8 +348,7 @@ fn apply_match(s: &mut Session, p: &Value) -> Result<Value> {
     }
     let provider = s.media.provider(s.project.clone(), s.services.clone());
     let opts = novafilm_render::RenderOptions { scale: 0.25, working_output: true, ..Default::default() };
-    let current =
-        novafilm_render::render_clip(&probe, seq_id, clip, t, opts, &provider).ok_or_else(|| bad("lumetri.applyMatch", "the clip has no picture"))?;
+    let current = novafilm_render::render_clip(&probe, seq_id, clip, t, opts, &provider).ok_or_else(|| bad("lumetri.applyMatch", "the clip has no picture"))?;
     let reference = novafilm_render::render_sequence(&s.project, seq_id, reference_t, opts, &provider);
     let m = novafilm_render::color_match::solve(&current, &reference, &base, skin);
     let v2 = |a: [f32; 2]| ParamValue::Vec2(novafilm_geom::Vec2::new(a[0] as f64, a[1] as f64));

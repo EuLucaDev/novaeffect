@@ -10,13 +10,13 @@
 use std::sync::mpsc::TryRecvError;
 use std::sync::{Arc, Mutex};
 
+use egui_kittest::Harness;
 use novaeffect_engine::Session;
 use novaeffect_engine::offload::{Inbox, Offload, Post, WorkerRequest};
 use novaeffect_engine::remote::{FrameMsg, FrameReply, FrameServer, Mirror};
 use novaeffect_engine::render::RenderOpts;
 use novaeffect_ui_egui::frames::{FrameImage, FrameKey, Frames, RemoteDone, RemoteFrame, RemoteFrames, RemoteJob, RenderSource};
 use novaeffect_ui_egui::{ControlRequest, NovaeffectApp};
-use egui_kittest::Harness;
 use serde_json::json;
 
 /// A frame worker in the same process: messages go through JSON like `postMessage`; rendered

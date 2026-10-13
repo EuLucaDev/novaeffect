@@ -1,11 +1,11 @@
 //! Angle fields must cancel on Escape and reject non-finite numeric input.
 
+use egui::{Event, Key, Modifiers, Pos2, pos2, vec2};
+use egui_kittest::Harness;
 use novaeffect_engine::Session;
 use novaeffect_engine::project::LayerId;
 use novaeffect_ui_egui::NovaeffectApp;
 use novaeffect_ui_egui::dock::PanelKind;
-use egui::{Event, Key, Modifiers, Pos2, pos2, vec2};
-use egui_kittest::Harness;
 use serde_json::json;
 
 #[derive(Clone, Copy, Debug)]

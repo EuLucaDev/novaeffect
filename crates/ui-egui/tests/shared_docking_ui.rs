@@ -1,13 +1,13 @@
 //! Existing Nova Effect workspaces use shared transactions without changing their saved schema.
+use egui::{Event, Modifiers, PointerButton, Rect, pos2, vec2};
+use egui_kittest::Harness;
+use egui_kittest::kittest::{NodeT, Queryable};
 use nova_ui::docking::{Action, Placement, Zone};
 use novaeffect_engine::Session;
 use novaeffect_ui_egui::{
     NovaeffectApp,
     dock::{self, DockNode, Layout, PanelKind, SplitSize, StackEntry},
 };
-use egui::{Event, Modifiers, PointerButton, Rect, pos2, vec2};
-use egui_kittest::Harness;
-use egui_kittest::kittest::{NodeT, Queryable};
 use serde_json::json;
 
 #[test]

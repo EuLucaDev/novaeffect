@@ -4,13 +4,13 @@
 
 use std::sync::{Arc, Mutex};
 
+use egui::{Event, Modifiers, pos2};
+use egui_kittest::Harness;
 use novaeffect_engine::Session;
 use novaeffect_engine::project::ItemId;
 use novaeffect_engine::time::Tick;
 use novaeffect_ui_egui::NovaeffectApp;
 use novaeffect_ui_egui::audio::{AudioDevice, AudioFeed};
-use egui::{Event, Modifiers, pos2};
-use egui_kittest::Harness;
 use serde_json::json;
 
 /// An output that records the feed it is given and whether it was stopped.

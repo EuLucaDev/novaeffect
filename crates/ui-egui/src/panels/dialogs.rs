@@ -2,8 +2,8 @@
 //! Composition Settings, Solid Settings and the command palette (Camera/Light Settings live in `dialogs_3d`).
 
 use crate::i18n::{tr, tr_args};
-use novaeffect_engine::project::{ItemId, ItemKind, LayerId, LayerSource};
 use egui::{Align2, Color32, Rect, Sense, pos2, vec2};
+use novaeffect_engine::project::{ItemId, ItemKind, LayerId, LayerSource};
 use serde_json::{Value, json};
 
 pub use super::forms::{Field, form, info, open_form};

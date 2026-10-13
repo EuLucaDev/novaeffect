@@ -3,15 +3,15 @@
 //! sRGB values as linear, so mid-grey `#808080` was stored as `#373737`), the square, slider and
 //! HSB / RGB fields set the colour, and Cancel / Escape / the original swatch restore it.
 
+use egui::accesskit::Role;
+use egui::{Event, Key, Modifiers, Pos2, pos2, vec2};
+use egui_kittest::Harness;
+use egui_kittest::kittest::Queryable;
 use novaeffect_engine::Session;
 use novaeffect_engine::project::LayerId;
 use novaeffect_ui_egui::NovaeffectApp;
 use novaeffect_ui_egui::dock::PanelKind;
 use novaeffect_ui_egui::widgets;
-use egui::accesskit::Role;
-use egui::{Event, Key, Modifiers, Pos2, pos2, vec2};
-use egui_kittest::Harness;
-use egui_kittest::kittest::Queryable;
 use serde_json::json;
 
 const GREY: f32 = 128.0 / 255.0;

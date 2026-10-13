@@ -5,12 +5,12 @@
 
 use std::sync::Arc;
 
+use egui::{Color32, Pos2, Stroke};
 use novaeffect_engine::effects::puppet::{self, Mesh, Pin, PinKind};
 use novaeffect_engine::geom::vec2 as gv2;
 use novaeffect_engine::project::{ItemId, Layer, LayerId};
 use novaeffect_engine::render::EvalCtx;
 use novaeffect_engine::time::Tick;
-use egui::{Color32, Pos2, Stroke};
 
 use super::viewer::{ViewerMap, fx2c};
 use crate::NovaeffectApp;

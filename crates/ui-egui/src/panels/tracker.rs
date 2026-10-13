@@ -4,12 +4,12 @@
 //!
 //! Everything goes through `track.*` commands, so agents can do the same.
 
+use egui::{Align2, Color32, Pos2, Rect, Sense, Stroke, StrokeKind, pos2, vec2};
 use novaeffect_engine::geom::{Mat3, vec2 as gv2};
 use novaeffect_engine::project::tracking::{LowConfidence, TrackChannel, TrackKind, TrackerOptions};
 use novaeffect_engine::project::{Layer, LayerId, Uid};
 use novaeffect_engine::time::Tick;
 use novaeffect_engine::tracking::point_values;
-use egui::{Align2, Color32, Pos2, Rect, Sense, Stroke, StrokeKind, pos2, vec2};
 use serde_json::json;
 
 use super::viewer::ViewerMap;

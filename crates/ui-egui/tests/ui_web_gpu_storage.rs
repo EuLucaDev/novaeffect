@@ -13,6 +13,7 @@
 use std::collections::HashMap;
 use std::sync::{Arc, Mutex};
 
+use egui_kittest::Harness;
 use novaeffect_engine::Session;
 use novaeffect_engine::remote::{FrameMsg, FrameReply, FrameServer, Mirror};
 use novaeffect_engine::render::RenderOpts;
@@ -22,7 +23,6 @@ use novaeffect_gpu::Gpu;
 use novaeffect_ui_egui::NovaeffectApp;
 use novaeffect_ui_egui::control::{self, ControlRequest, Outcome};
 use novaeffect_ui_egui::frames::{FrameImage, FrameKey, Frames, RemoteDone, RemoteFrame, RemoteFrames, RemoteJob, RenderSource};
-use egui_kittest::Harness;
 use serde_json::{Value, json};
 
 fn rt<T: serde::Serialize + for<'de> serde::Deserialize<'de>>(v: &T) -> T {

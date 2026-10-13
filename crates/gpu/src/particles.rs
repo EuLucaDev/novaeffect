@@ -37,8 +37,7 @@ fn pipes(g: &GpuContext) -> &Pipes {
     g.particles.get_or_init(|| {
         let d = &g.device;
         let src = [include_str!("shaders/common.wgsl"), include_str!("shaders/kernels.wgsl"), include_str!("shaders/particles.wgsl")].concat();
-        let module =
-            d.create_shader_module(wgpu::ShaderModuleDescriptor { label: Some("novaeffect particles"), source: wgpu::ShaderSource::Wgsl(src.into()) });
+        let module = d.create_shader_module(wgpu::ShaderModuleDescriptor { label: Some("novaeffect particles"), source: wgpu::ShaderSource::Wgsl(src.into()) });
         let buffer = |binding: u32, ty: wgpu::BufferBindingType| wgpu::BindGroupLayoutEntry {
             binding,
             visibility: wgpu::ShaderStages::COMPUTE,

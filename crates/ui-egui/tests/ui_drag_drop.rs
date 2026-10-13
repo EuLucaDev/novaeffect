@@ -7,15 +7,15 @@
 use std::sync::Arc;
 use std::sync::atomic::{AtomicUsize, Ordering};
 
+use egui::{Event, Modifiers, Pos2, Rect, pos2, vec2};
+use egui_kittest::Harness;
+use egui_kittest::kittest::Queryable;
 use novaeffect_engine::Session;
 use novaeffect_engine::keyframe::Value as KV;
 use novaeffect_engine::time::Tick;
 use novaeffect_ui_egui::NovaeffectApp;
 use novaeffect_ui_egui::dock::PanelKind;
 use novaeffect_ui_egui::panels::viewer::{comp_to_screen, last_fit};
-use egui::{Event, Modifiers, Pos2, Rect, pos2, vec2};
-use egui_kittest::Harness;
-use egui_kittest::kittest::Queryable;
 use serde_json::json;
 
 /// Comp "Main" (4 s at 30 fps, current time 1 s) with solids Top, Middle and Bottom, and comp

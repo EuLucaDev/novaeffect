@@ -3,13 +3,13 @@
 
 use std::sync::Arc;
 
+use egui_kittest::Harness;
 use novaeffect_engine::Session;
 use novaeffect_engine::project::{Footage, FootageKind, ItemId, ItemKind};
 use novaeffect_engine::render::FootageSource;
 use novaeffect_render::Image;
 use novaeffect_time::Tick;
 use novaeffect_ui_egui::NovaeffectApp;
-use egui_kittest::Harness;
 use serde_json::json;
 
 const WHY: &str = "H.264 (High 4:2:2) isn't supported by the built-in decoder: chroma_format_idc 2 (only 4:2:0 is implemented)";

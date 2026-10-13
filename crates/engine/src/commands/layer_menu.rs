@@ -338,12 +338,7 @@ pub(crate) fn target_masks(s: &Session, p: &Value) -> Result<(ItemId, Vec<(Layer
     Ok((cid, out))
 }
 
-fn edit_masks(
-    s: &mut Session,
-    p: &Value,
-    label: &str,
-    mut f: impl FnMut(&mut novaeffect_project::PropGroup, (f64, f64), Tick) -> Result<()>,
-) -> Result<Value> {
+fn edit_masks(s: &mut Session, p: &Value, label: &str, mut f: impl FnMut(&mut novaeffect_project::PropGroup, (f64, f64), Tick) -> Result<()>) -> Result<Value> {
     let (cid, targets) = target_masks(s, p)?;
     if targets.is_empty() {
         return Err(EngineError::Other(format!(

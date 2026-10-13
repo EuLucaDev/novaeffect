@@ -1,9 +1,9 @@
 //! Rasterisation of a parsed SVG into a premultiplied `f32` image (anti-aliased coverage from
 //! `novaeffect-path`; group opacity composites the group as a whole, as SVG specifies).
 
+use kurbo::{Affine, Point, Shape as _};
 use novaeffect_geom::Mat3;
 use novaeffect_raster::{Image, Mask};
-use kurbo::{Affine, Point, Shape as _};
 use rayon::prelude::*;
 
 use crate::{BlendMode, Doc, FillRule, Gradient, GradientKind, Group, Node, Paint, Shape, Spread};

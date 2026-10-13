@@ -2,12 +2,12 @@
 //! staggers the layers in selection order, onto subframes, as one undo step; a plain drag still
 //! moves them together and Alt alone still scales a key group.
 
+use egui::{Event, Modifiers, Pos2, pos2, vec2};
+use egui_kittest::Harness;
 use novaeffect_engine::Session;
 use novaeffect_engine::project::LayerId;
 use novaeffect_engine::time::Tick;
 use novaeffect_ui_egui::NovaeffectApp;
-use egui::{Event, Modifiers, Pos2, pos2, vec2};
-use egui_kittest::Harness;
 use serde_json::json;
 
 /// One frame at 30 fps.

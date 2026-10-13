@@ -14,6 +14,7 @@
 //! Every change runs an engine command (`text.*`, `layer.setText`, `edit.*`), so it's undoable and
 //! agents can do the same over the control channel.
 
+use egui::{Color32, Pos2, Rect, Stroke, StrokeKind, vec2};
 use novaeffect_engine::commands::text_edit::layer_doc;
 use novaeffect_engine::geom::{Mat3, vec2 as gv2};
 use novaeffect_engine::keyframe::{Kerning, TextDoc};
@@ -21,7 +22,6 @@ use novaeffect_engine::project::{Layer, LayerId, LayerSource};
 use novaeffect_engine::render::EvalCtx;
 use novaeffect_engine::text::kurbo::Point;
 use novaeffect_engine::text::{TextLayout, layout_doc};
-use egui::{Color32, Pos2, Rect, Stroke, StrokeKind, vec2};
 use serde_json::{Value, json};
 
 use super::viewer::ViewerMap;

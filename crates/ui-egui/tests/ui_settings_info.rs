@@ -1,10 +1,10 @@
 //! Settings remain a single transaction while GPU Information is open.
 use std::sync::Arc;
 
-use novaeffect_engine::{Session, config::MemoryConfig};
-use novaeffect_ui_egui::{Dialog, NovaeffectApp, menus};
 use egui::{Event, Key, Modifiers, PointerButton, Pos2, Rect, pos2, vec2};
 use egui_kittest::{Harness, kittest::Queryable as _};
+use novaeffect_engine::{Session, config::MemoryConfig};
+use novaeffect_ui_egui::{Dialog, NovaeffectApp, menus};
 use serde_json::json;
 
 fn rect(h: &Harness<'_, NovaeffectApp>, id: &str) -> Rect {

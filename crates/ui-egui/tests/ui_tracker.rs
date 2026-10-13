@@ -1,10 +1,10 @@
 //! Headless checks for the Tracker panel and the viewer's track point widgets (egui_kittest, UI
 //! logic only: no GPU needed).
 
+use egui_kittest::Harness;
 use novaeffect_engine::Session;
 use novaeffect_ui_egui::NovaeffectApp;
 use novaeffect_ui_egui::dock::PanelKind;
-use egui_kittest::Harness;
 use serde_json::json;
 
 fn app() -> NovaeffectApp {

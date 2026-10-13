@@ -1,7 +1,7 @@
-use novaeffect_engine::Session;
-use novaeffect_ui_egui::{NovaeffectApp, dock::PanelKind};
 use egui::{Event, Modifiers, PointerButton, pos2, vec2};
 use egui_kittest::Harness;
+use novaeffect_engine::Session;
+use novaeffect_ui_egui::{NovaeffectApp, dock::PanelKind};
 use serde_json::json;
 
 fn setup() -> (NovaeffectApp, u64, u64, u64) {

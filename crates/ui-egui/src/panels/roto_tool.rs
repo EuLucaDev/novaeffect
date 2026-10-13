@@ -2,10 +2,10 @@
 //! background strokes, Refine Edge strokes along soft edges; the matte overlay (Alpha Boundary in
 //! pink, Alpha, Alpha Overlay), the segmentation span bar and the Freeze button.
 
+use egui::{Align2, Color32, Pos2, Rect, Sense, Stroke, StrokeKind, pos2, vec2};
 use novaeffect_engine::effects::roto as fx;
 use novaeffect_engine::project::{Comp, Layer};
 use novaeffect_engine::render::{EvalCtx, RenderOpts, Renderer};
-use egui::{Align2, Color32, Pos2, Rect, Sense, Stroke, StrokeKind, pos2, vec2};
 use serde_json::json;
 
 use crate::i18n::tr;

@@ -1,8 +1,8 @@
 //! A form keeps its fields and its buttons inside the dialog, whatever a choice's text is (#978).
-use novaeffect_engine::Session;
-use novaeffect_ui_egui::{Dialog, NovaeffectApp, menus};
 use egui::{Rect, pos2, vec2};
 use egui_kittest::Harness;
+use novaeffect_engine::Session;
+use novaeffect_ui_egui::{Dialog, NovaeffectApp, menus};
 use serde_json::json;
 
 fn rect(h: &Harness<'_, NovaeffectApp>, id: &str) -> Rect {

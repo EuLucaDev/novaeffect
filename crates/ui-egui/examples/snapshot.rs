@@ -15,8 +15,8 @@
 use std::sync::mpsc;
 use std::time::{Duration, Instant};
 
-use novaeffect_ui_egui::{ControlRequest, NovaeffectApp};
 use egui_kittest::Harness;
+use novaeffect_ui_egui::{ControlRequest, NovaeffectApp};
 use serde_json::{Value, json};
 
 struct Args {

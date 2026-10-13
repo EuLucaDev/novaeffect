@@ -6,8 +6,8 @@
 //! space (2×2 supersampled, so the mesh's outer edges are anti-aliased without seams between
 //! triangles).
 
-use novaeffect_svg::{Affine, Image as SvgImage};
 use kurbo::Point;
+use novaeffect_svg::{Affine, Image as SvgImage};
 
 use crate::color::{Cs, Func, color_space};
 use crate::object::{Dict, File, Obj, decode_stream};

@@ -1,9 +1,9 @@
 //! Effects & Presets: copy the configured folder path through the contents menu.
 
-use novaeffect_engine::Session;
-use novaeffect_ui_egui::{ControlRequest, NovaeffectApp, control, dock::PanelKind};
 use egui::{Event, Modifiers, OutputCommand, PointerButton, pos2};
 use egui_kittest::Harness;
+use novaeffect_engine::Session;
+use novaeffect_ui_egui::{ControlRequest, NovaeffectApp, control, dock::PanelKind};
 use serde_json::json;
 
 fn expected_folder() -> String {

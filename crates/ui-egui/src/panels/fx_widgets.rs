@@ -5,8 +5,8 @@
 //!
 //! The maths lives in plain functions so it can be tested without a UI.
 
-use novaeffect_engine::geom::{Mat3, vec2 as gv2};
 use egui::{Align2, Color32, Pos2, Rect, Sense, Stroke, StrokeKind, pos2, vec2};
+use novaeffect_engine::geom::{Mat3, vec2 as gv2};
 
 use crate::theme::Tokens;
 use crate::widgets;

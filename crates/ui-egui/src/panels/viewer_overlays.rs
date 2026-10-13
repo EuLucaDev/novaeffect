@@ -5,13 +5,13 @@
 //! Every edit is an engine command (`mask.*`, `path.freeTransform`, `keys.set`,
 //! `keys.setSpatialTangents`, `prop.set`).
 
+use egui::{Color32, Pos2, Rect, Stroke, StrokeKind, vec2};
 use novaeffect_engine::geom::{Mat3, vec2 as gv2};
 use novaeffect_engine::keyframe::ShapePath;
 use novaeffect_engine::project::{GroupKind, Layer, LayerId};
 use novaeffect_engine::render::EvalCtx;
 use novaeffect_engine::time::Tick;
 use novaeffect_engine::{KeyRef, VertexRef};
-use egui::{Color32, Pos2, Rect, Stroke, StrokeKind, vec2};
 use serde_json::json;
 
 use super::viewer::ViewerMap;
@@ -434,13 +434,7 @@ impl FtBox {
 }
 
 /// Draw the free-transform box of the target path (if any) and return it for hit tests.
-pub(crate) fn draw_free_transform(
-    app: &mut NovaeffectApp,
-    ctx: &egui::Context,
-    painter: &egui::Painter,
-    map: &ViewerMap,
-    paths: &[PathInfo],
-) -> Option<FtBox> {
+pub(crate) fn draw_free_transform(app: &mut NovaeffectApp, ctx: &egui::Context, painter: &egui::Painter, map: &ViewerMap, paths: &[PathInfo]) -> Option<FtBox> {
     let (layer, uid) = free_transform_target(ctx)?;
     let Some(p) = paths.iter().find(|p| p.layer == layer && p.uid == uid) else {
         end_free_transform(ctx);

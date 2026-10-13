@@ -922,8 +922,7 @@ fn modern_clients_get_result_type() {
     }
     let mut s = server();
     rpc(&mut s, 1, "initialize", json!({"protocolVersion": "2025-06-18", "capabilities": {}, "clientInfo": {"name": "t", "version": "1"}}));
-    for (id, method, params) in
-        [(2, "tools/list", json!({})), (3, "resources/list", json!({})), (4, "resources/read", json!({"uri": "novaeffect://document"}))]
+    for (id, method, params) in [(2, "tools/list", json!({})), (3, "resources/list", json!({})), (4, "resources/read", json!({"uri": "novaeffect://document"}))]
     {
         let r = rpc(&mut s, id, method, params);
         let res = r.as_object().unwrap();

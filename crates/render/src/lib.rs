@@ -27,6 +27,7 @@ use std::sync::atomic::{AtomicBool, Ordering};
 
 pub use auto::{AutoKey, AutoPick};
 pub use cache::{CacheStats, LayerCache, LayerStore, PrefetchStore};
+pub use eval::{EvalCtx, ExprHost, effect_bounds, source_size};
 use novaeffect_color::BlendMode;
 use novaeffect_effects::{Buf, EffectCtx, EffectEnv, EffectHost, LayerPixels, Params};
 use novaeffect_geom::{Mat3, Mat4, vec2};
@@ -34,7 +35,6 @@ use novaeffect_project::{Comp, Footage, FootageKind, FrameBlend, GroupKind, Item
 pub use novaeffect_raster::Image;
 use novaeffect_raster::{WarpOpts, composite_warp};
 use novaeffect_time::{FrameRate, TICKS_PER_SECOND, Tick};
-pub use eval::{EvalCtx, ExprHost, effect_bounds, source_size};
 use rayon::prelude::*;
 
 /// How a [`FootageSource`] hands over float footage (OpenEXR, float TIFF), whose values are

@@ -3,13 +3,13 @@
 //! colour map and Reshape's correspondence points (Effect Controls buttons and viewer handles).
 //! Each edit goes through `prop.set` and undoes in one step.
 
+use egui::{Event, Pos2, pos2};
+use egui_kittest::Harness;
 use novaeffect_engine::Session;
 use novaeffect_engine::keyframe::Value as KV;
 use novaeffect_engine::project::{LayerId, Node, PropGroup};
 use novaeffect_ui_egui::NovaeffectApp;
 use novaeffect_ui_egui::dock::PanelKind;
-use egui::{Event, Pos2, pos2};
-use egui_kittest::Harness;
 use serde_json::json;
 
 fn harness(s: Session) -> Harness<'static, NovaeffectApp> {

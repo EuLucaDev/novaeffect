@@ -9,8 +9,8 @@
 use crate::i18n::tr_args;
 use std::collections::{BTreeMap, BTreeSet};
 
-use novaeffect_engine::project::{ItemId, ItemKind, LayerSource, Project};
 use egui::{Align2, Color32, Rect, Sense, Stroke, StrokeKind, pos2, vec2};
+use novaeffect_engine::project::{ItemId, ItemKind, LayerSource, Project};
 use serde::{Deserialize, Serialize};
 use serde_json::{Value, json};
 

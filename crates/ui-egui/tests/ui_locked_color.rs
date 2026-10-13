@@ -1,9 +1,9 @@
 //! The split locked viewer re-converts its pixels when the display profile or the output
 //! simulation changes (egui_kittest, texture uploads captured).
 
+use egui_kittest::{Harness, TestRenderer};
 use novaeffect_engine::{Session, render::RenderOpts, viewer::DisplayColor};
 use novaeffect_ui_egui::NovaeffectApp;
-use egui_kittest::{Harness, TestRenderer};
 use serde_json::{Value, json};
 use std::{cell::RefCell, collections::HashMap, rc::Rc};
 

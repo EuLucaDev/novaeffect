@@ -1,14 +1,14 @@
 //! Inspect the actual viewer's painted colors and pointer-driven control geometry.
 
+use egui::{Color32, Event, Rect, Shape, pos2, vec2};
+use egui_kittest::Harness;
+use egui_kittest::kittest::Queryable;
 use novaeffect_engine::Session;
 use novaeffect_ui_egui::{
     NovaeffectApp,
     panels::viewer,
     theme::{self, ThemeKind},
 };
-use egui::{Color32, Event, Rect, Shape, pos2, vec2};
-use egui_kittest::Harness;
-use egui_kittest::kittest::Queryable;
 use serde_json::json;
 
 fn harness(width: f32, kind: ThemeKind) -> Harness<'static, NovaeffectApp> {

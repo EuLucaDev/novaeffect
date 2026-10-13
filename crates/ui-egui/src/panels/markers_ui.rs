@@ -9,9 +9,9 @@
 //! is dropped. Every change is an engine command, so it is undoable and agent-drivable.
 
 use crate::i18n::tr;
+use egui::{Align2, Color32, Pos2, Rect, Sense, Stroke, pos2, vec2};
 use novaeffect_engine::project::{Comp, Layer, Marker};
 use novaeffect_engine::time::Tick;
-use egui::{Align2, Color32, Pos2, Rect, Sense, Stroke, pos2, vec2};
 use serde_json::{Value, json};
 
 use super::timeline::TMap;

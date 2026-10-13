@@ -9,8 +9,8 @@
 use crate::i18n::tr;
 use std::sync::Arc;
 
-use novaeffect_engine::project::ItemId;
 use egui::{Align2, Color32, Rect, Sense, pos2, vec2};
+use novaeffect_engine::project::ItemId;
 use serde_json::json;
 
 use crate::NovaeffectApp;

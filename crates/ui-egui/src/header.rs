@@ -198,9 +198,10 @@ pub fn show(app: &mut NovaeffectApp, ui: &mut egui::Ui, rect: Rect) {
         let _ = app.session.execute("help.discord", json!({}));
     }
     rx = discord.min.x - 6.0;
-    for (id, icon, tip, cmd) in
-        [("hdr-github", Icon::Code, "Nova Effect on GitHub", "help.github"), ("hdr-web", Icon::Globe, "Nova Effect on workflowind.agcunae.com/apps", "help.appPage")]
-    {
+    for (id, icon, tip, cmd) in [
+        ("hdr-github", Icon::Code, "Nova Effect on GitHub", "help.github"),
+        ("hdr-web", Icon::Globe, "Nova Effect on workflowind.agcunae.com/apps", "help.appPage"),
+    ] {
         let r = Rect::from_min_max(pos2(rx - 26.0, cy - 13.0), pos2(rx, cy + 13.0));
         if widgets::icon_button(ui, r, icon, false, &t, egui::Id::new(id)).on_hover_text(tip).clicked() {
             let _ = app.session.execute(cmd, json!({}));

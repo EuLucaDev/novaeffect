@@ -8,9 +8,9 @@
 //! `settings.cancel`, `settings.previous`, `settings.next`.
 
 use crate::i18n::{tr, tr_args};
+use egui::{Color32, RichText, vec2};
 use novaeffect_engine::prefs::{APPEARANCE_MODES, DARK_THEMES, Item, Kind, LIGHT_THEMES, Page, pages};
 use novaeffect_engine::segment::Task;
-use egui::{Color32, RichText, vec2};
 use serde_json::{Value, json};
 
 use crate::theme::{ThemeKind, Tokens};

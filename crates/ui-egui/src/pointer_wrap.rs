@@ -456,8 +456,8 @@ mod tests {
     #[test]
     fn real_properties_and_angle_drags_keep_each_gesture_in_one_undo_step() {
         use crate::{NovaeffectApp, dock::PanelKind};
-        use novaeffect_engine::project::LayerId;
         use eframe::App;
+        use novaeffect_engine::project::LayerId;
         use serde_json::json;
 
         for angle in [false, true] {

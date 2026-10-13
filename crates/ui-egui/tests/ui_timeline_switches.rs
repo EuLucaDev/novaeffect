@@ -3,13 +3,13 @@
 //! in After Effects (#227); stopwatches the same way (#284). Also the label swatch's menu and the
 //! layer bar past its source (#290).
 
+use egui::{Color32, Event, Modifiers, Pos2, Rect, pos2, vec2};
+use egui_kittest::Harness;
+use egui_kittest::kittest::Queryable;
 use novaeffect_engine::Session;
 use novaeffect_engine::color::Label;
 use novaeffect_engine::project::LayerId;
 use novaeffect_ui_egui::NovaeffectApp;
-use egui::{Color32, Event, Modifiers, Pos2, Rect, pos2, vec2};
-use egui_kittest::Harness;
-use egui_kittest::kittest::Queryable;
 use serde_json::json;
 
 /// Comp "Main" with solids A (top) to D (bottom); returns their ids top to bottom.

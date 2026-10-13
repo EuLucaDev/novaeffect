@@ -4,9 +4,9 @@
 //! Automation ids: `viewer.exprErrors`, `viewer.exprErrors.prev`, `viewer.exprErrors.next`.
 
 use crate::i18n::tr;
+use egui::{Align2, Color32, Rect, Sense, pos2, vec2};
 use novaeffect_engine::commands::expr_tools::ExprError;
 use novaeffect_engine::project::ItemId;
-use egui::{Align2, Color32, Rect, Sense, pos2, vec2};
 use serde_json::json;
 use std::sync::Arc;
 

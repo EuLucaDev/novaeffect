@@ -1,7 +1,7 @@
-use novaeffect_engine::{Session, config::MemoryConfig, prefs::Prefs};
-use novaeffect_ui_egui::{NovaeffectApp, menus};
 use egui::{Event, Modifiers, PointerButton, Pos2, pos2, vec2};
 use egui_kittest::Harness;
+use novaeffect_engine::{Session, config::MemoryConfig, prefs::Prefs};
+use novaeffect_ui_egui::{NovaeffectApp, menus};
 use serde_json::json;
 use std::sync::Arc;
 

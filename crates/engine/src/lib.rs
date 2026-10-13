@@ -59,6 +59,7 @@ use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
 pub use commands::{CommandSpec, command_specs, find as find_command};
+pub use history::{Branch, History, HistoryNode};
 pub use novaeffect_color as color;
 pub use novaeffect_effects as effects;
 pub use novaeffect_geom as geom;
@@ -70,7 +71,6 @@ pub use novaeffect_segment as segment;
 pub use novaeffect_text as text;
 pub use novaeffect_time as time;
 pub use novaeffect_track as track;
-pub use history::{Branch, History, HistoryNode};
 pub use render_queue::{ExportJob, ExportResult, Exporter, JobState};
 
 #[derive(Debug, thiserror::Error)]

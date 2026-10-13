@@ -4,10 +4,10 @@
 //! Effects): the same controls zoom the graph's time axis, centred on the current time, and
 //! switching between the views keeps it.
 
+use egui_kittest::Harness;
 use novaeffect_engine::Session;
 use novaeffect_ui_egui::NovaeffectApp;
 use novaeffect_ui_egui::control::{self, ControlRequest, Outcome};
-use egui_kittest::Harness;
 use serde_json::{Value, json};
 
 /// A 10 s, 30 fps comp with a layer whose Opacity is keyed at 1 s and 8 s, revealed, the CTI at

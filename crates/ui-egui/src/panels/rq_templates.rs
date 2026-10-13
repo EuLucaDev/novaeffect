@@ -7,8 +7,8 @@
 //! `templates.newName`, `templates.saveFromItem`, `templates.ok`.
 
 use crate::i18n::{tr, tr_args};
-use novaeffect_engine::project::render_templates::{RenderTemplates, TemplateKind, TemplateSlot};
 use egui::{Color32, vec2};
+use novaeffect_engine::project::render_templates::{RenderTemplates, TemplateKind, TemplateSlot};
 use serde_json::{Value, json};
 
 use crate::theme::Tokens;

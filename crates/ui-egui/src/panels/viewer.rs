@@ -4,6 +4,7 @@
 //! 3D views (Active Camera / Front / … / Custom View 3), camera tools (orbit, pan, dolly) and
 //! camera/light wireframes.
 
+use egui::{Align2, Color32, Pos2, Rect, Sense, Stroke, StrokeKind, pos2, vec2};
 use novaeffect_engine::commands::shape_tool::PaintKind;
 use novaeffect_engine::effects::puppet::PinKind;
 use novaeffect_engine::geom::{Mat3, vec2 as gv2};
@@ -11,7 +12,6 @@ use novaeffect_engine::project::{Comp, Layer, LayerId, LayerSource};
 use novaeffect_engine::render::EvalCtx;
 use novaeffect_engine::render::three_d::{self, CameraState, View3D};
 use novaeffect_engine::time::Tick;
-use egui::{Align2, Color32, Pos2, Rect, Sense, Stroke, StrokeKind, pos2, vec2};
 use serde_json::json;
 
 use crate::state::Tool;
@@ -615,12 +615,8 @@ fn aux_views(
         let tex = match cached {
             Some((k, tex)) if k == key => tex,
             _ => {
-                let opts = novaeffect_engine::render::RenderOpts {
-                    scale,
-                    view: (comp.has_3d() && !through_active).then_some(cam),
-                    draft: true,
-                    ..Default::default()
-                };
+                let opts =
+                    novaeffect_engine::render::RenderOpts { scale, view: (comp.has_3d() && !through_active).then_some(cam), draft: true, ..Default::default() };
                 let img = app.session.render(cid, t, opts);
                 let tex = crate::frames::load_fitted(&ctx, format!("viewer-aux-{i}"), crate::frames::to_color_image(&img), egui::TextureOptions::LINEAR);
                 ctx.data_mut(|d| d.insert_temp(id, (key, tex.clone())));

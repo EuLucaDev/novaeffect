@@ -1,11 +1,11 @@
 //! The menu bar from the keyboard, and the app's shortcuts waiting while a menu is open (#279)
 //! (egui_kittest, UI logic only).
 
-use novaeffect_engine::Session;
-use novaeffect_ui_egui::NovaeffectApp;
 use egui::{Event, Key, Modifiers, Pos2, Rect, pos2, vec2};
 use egui_kittest::Harness;
 use egui_kittest::kittest::{NodeT, Queryable};
+use novaeffect_engine::Session;
+use novaeffect_ui_egui::NovaeffectApp;
 use serde_json::json;
 
 fn harness() -> Harness<'static, NovaeffectApp> {

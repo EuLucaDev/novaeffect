@@ -48,9 +48,7 @@ fn a_panel_dropped_in_the_folder_is_listed_and_opens_as_a_panel() {
     // Frontends dock it (`window.scriptPanel {window}` for the UI).
     let events = s.drain_events();
     assert!(
-        events
-            .iter()
-            .any(|e| matches!(e, novaeffect_engine::Event::Frontend { command, params } if command == "window.scriptPanel" && params["window"] == id))
+        events.iter().any(|e| matches!(e, novaeffect_engine::Event::Frontend { command, params } if command == "window.scriptPanel" && params["window"] == id))
     );
 }
 

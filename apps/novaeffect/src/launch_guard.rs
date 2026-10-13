@@ -16,8 +16,8 @@ use std::fs::File;
 use std::path::{Path, PathBuf};
 use std::time::{Duration, Instant};
 
-use novaeffect_engine::prefs::{PREFS_FILE, Prefs};
 use eframe::wgpu::Backends;
+use novaeffect_engine::prefs::{PREFS_FILE, Prefs};
 
 /// Left in the settings folder from a launch until its window has settled.
 const MARKER: &str = "launch-pending";
@@ -62,7 +62,7 @@ impl Launch {
                 Err(e) => log::warn!("the last launch stopped as its window opened; saving Window Graphics failed: {e}"),
             }
             notice = Some(
-                "NovaEffect's last launch stopped as its window opened, so it now draws with OpenGL \
+                "Nova Effect's last launch stopped as its window opened, so it now draws with OpenGL \
                  (Settings ▸ Startup & Repair ▸ Window Graphics). Updating the graphics driver may let it use \
                  Automatic again."
                     .to_string(),

@@ -1,10 +1,10 @@
 //! Enter renames the selected effect, text animator, mask or shape group, not only the layer
 //! (#1061). Enter commits, Escape cancels.
 
-use novaeffect_engine::Session;
-use novaeffect_ui_egui::NovaeffectApp;
 use egui::{Event, Key, Modifiers};
 use egui_kittest::Harness;
+use novaeffect_engine::Session;
+use novaeffect_ui_egui::NovaeffectApp;
 use serde_json::json;
 
 struct Fx {

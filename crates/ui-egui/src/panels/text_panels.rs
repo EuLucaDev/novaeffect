@@ -3,9 +3,9 @@
 //! otherwise they apply to the whole selected text layer.
 
 use crate::i18n::tr;
+use egui::{Align2, Rect, Sense, pos2, vec2};
 use novaeffect_engine::keyframe::{BaselineOption, Composer, Direction, FigureStyle, FigureWidth, Justify, Kerning, TextDoc};
 use novaeffect_engine::render::EvalCtx;
-use egui::{Align2, Rect, Sense, pos2, vec2};
 use serde_json::json;
 
 use crate::state::TextColorPick;

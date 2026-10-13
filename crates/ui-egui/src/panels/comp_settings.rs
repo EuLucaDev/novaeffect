@@ -4,9 +4,9 @@
 
 use crate::i18n::{tr, tr_args};
 use crate::icons::Icon;
+use egui::{Color32, vec2};
 use novaeffect_engine::prefs::CompPreset;
 use novaeffect_engine::time::{FrameRate, format_timecode_frames, parse_timecode};
-use egui::{Color32, vec2};
 use serde_json::json;
 
 use crate::automation::Registry;

@@ -10,9 +10,9 @@
 use std::collections::HashMap;
 use std::sync::mpsc::{Receiver, channel};
 
+use muda::{CheckMenuItem, Menu, MenuEvent, PredefinedMenuItem, Submenu};
 use novaeffect_ui_egui::NovaeffectApp;
 use novaeffect_ui_egui::native_menu::{self, NativeMenu, NativeNode, Role};
-use muda::{CheckMenuItem, Menu, MenuEvent, PredefinedMenuItem, Submenu};
 
 /// The `muda` accelerator for a spec accelerator string.
 pub fn parse_accelerator(s: &str) -> Option<muda::accelerator::Accelerator> {

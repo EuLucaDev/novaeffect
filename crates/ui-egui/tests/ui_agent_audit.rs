@@ -6,12 +6,12 @@
 //!   it draws: egui's interactive widget rects of the frame are matched against the registered
 //!   automation elements, and any widget no element covers is a gap.
 
+use egui::Rect;
+use egui_kittest::Harness;
 use novaeffect_engine::Session;
 use novaeffect_ui_egui::NovaeffectApp;
 use novaeffect_ui_egui::control::{self, ControlRequest, Outcome};
 use novaeffect_ui_egui::dock::PanelKind;
-use egui::Rect;
-use egui_kittest::Harness;
 use serde_json::{Value, json};
 
 fn session() -> Session {

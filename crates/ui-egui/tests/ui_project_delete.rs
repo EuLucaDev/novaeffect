@@ -1,12 +1,12 @@
 //! Project-panel deletion uses its selection, even when a Timeline layer is still selected.
 //! Shift+Delete deletes it without asking (Delete Project Items Without Confirmation).
 
+use egui::{Event, Key, Modifiers, pos2};
+use egui_kittest::Harness;
 use novaeffect_engine::Session;
 use novaeffect_engine::project::{Footage, FootageKind, ItemId, ItemKind, LayerId};
 use novaeffect_ui_egui::dock::PanelKind;
 use novaeffect_ui_egui::{Dialog, NovaeffectApp};
-use egui::{Event, Key, Modifiers, pos2};
-use egui_kittest::Harness;
 use serde_json::json;
 
 fn harness() -> (Harness<'static, NovaeffectApp>, Vec<ItemId>, LayerId) {

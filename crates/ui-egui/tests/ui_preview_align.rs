@@ -2,13 +2,13 @@
 //! play from, resolution, overlays, full screen, move time), the preview shortcuts pick their
 //! options, and the Align panel runs `layer.align` / `layer.distribute`.
 
+use egui::{Event, Pos2, pos2};
+use egui_kittest::Harness;
 use novaeffect_engine::Session;
 use novaeffect_engine::preview::PreviewShortcut;
 use novaeffect_engine::time::Tick;
 use novaeffect_ui_egui::NovaeffectApp;
 use novaeffect_ui_egui::dock::PanelKind;
-use egui::{Event, Pos2, pos2};
-use egui_kittest::Harness;
 use serde_json::json;
 
 fn harness() -> Harness<'static, NovaeffectApp> {

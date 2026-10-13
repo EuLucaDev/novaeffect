@@ -456,8 +456,7 @@ impl Doc<'_> {
         if !l.markers.is_empty() {
             self.ex.warn(format!("{name}: layer markers are not part of Lottie (composition markers are exported)"));
         }
-        if l.props.sub(novaeffect_project::styles::GROUP).is_some_and(|g| g.groups().any(|s| s.enabled && s.match_id != novaeffect_project::styles::BLENDING))
-        {
+        if l.props.sub(novaeffect_project::styles::GROUP).is_some_and(|g| g.groups().any(|s| s.enabled && s.match_id != novaeffect_project::styles::BLENDING)) {
             self.ex.warn(format!("{name}: layer styles are not exported"));
         }
         if l.preserve_transparency {

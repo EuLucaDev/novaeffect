@@ -16,11 +16,11 @@ pub mod ops;
 pub mod trace;
 pub mod varstroke;
 
+pub use kurbo::{BezPath, PathEl, Point};
+use kurbo::{Shape, Vec2 as KVec2};
 use novaeffect_geom::Mat3;
 use novaeffect_keyframe::ShapePath;
 use novaeffect_raster::Mask;
-pub use kurbo::{BezPath, PathEl, Point};
-use kurbo::{Shape, Vec2 as KVec2};
 
 /// Convert the AE vertex/tangent model to a kurbo path.
 pub fn to_kurbo(p: &ShapePath) -> BezPath {

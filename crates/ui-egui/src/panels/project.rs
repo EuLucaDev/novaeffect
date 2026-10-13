@@ -9,9 +9,9 @@
 
 use std::sync::{Arc, Mutex};
 
+use egui::{Align2, Color32, Rect, Sense, Stroke, pos2, vec2};
 use novaeffect_engine::color::Label;
 use novaeffect_engine::project::{Item, ItemId, ItemKind};
-use egui::{Align2, Color32, Rect, Sense, Stroke, pos2, vec2};
 use serde_json::json;
 
 use crate::icons::{self, Icon};
@@ -824,9 +824,7 @@ pub fn show(app: &mut NovaeffectApp, ui: &mut egui::Ui, rect: Rect) {
                     app.ui.project_open_folders.insert(id.0);
                 }
                 // Footage (not data) and solids open in the Footage panel.
-                ItemKind::Footage(f) if f.kind != novaeffect_engine::project::FootageKind::Data => {
-                    actions.push(("footage.open".into(), json!({"item": id.0})))
-                }
+                ItemKind::Footage(f) if f.kind != novaeffect_engine::project::FootageKind::Data => actions.push(("footage.open".into(), json!({"item": id.0}))),
                 ItemKind::Solid(_) => actions.push(("footage.open".into(), json!({"item": id.0}))),
                 _ => {}
             }

@@ -3,12 +3,12 @@
 //! layers deselecting them (#205), Mask Feather's linked values (#203), and copying shape items
 //! between shape layers (#227), and Ctrl+V of SVG markup making a shape layer (#738).
 
-use novaeffect_engine::Session;
-use novaeffect_engine::project::LayerId;
-use novaeffect_ui_egui::{Dialog, NovaeffectApp};
 use egui::{Event, Key, Modifiers, PointerButton, Pos2, pos2};
 use egui_kittest::Harness;
 use egui_kittest::kittest::Queryable;
+use novaeffect_engine::Session;
+use novaeffect_engine::project::LayerId;
+use novaeffect_ui_egui::{Dialog, NovaeffectApp};
 use serde_json::json;
 
 fn harness(s: Session) -> Harness<'static, NovaeffectApp> {

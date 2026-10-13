@@ -613,8 +613,7 @@ fn run(cmd: &str, args: &Args, json_out: bool) -> Result<(), Failure> {
             }
             let server = McpServer::new(b);
             let mut server = if args.flag("--autosave") {
-                let root =
-                    novaeffect_host::config_dir().ok_or_else(|| Failure::Error("--autosave: no config directory; set NOVAEFFECT_CONFIG_DIR".into()))?;
+                let root = novaeffect_host::config_dir().ok_or_else(|| Failure::Error("--autosave: no config directory; set NOVAEFFECT_CONFIG_DIR".into()))?;
                 server.with_autosave(&root)?
             } else {
                 server

@@ -1,11 +1,11 @@
 //! Inline text fields (a name, the current time) open with their whole text selected so typing
 //! replaces it, commit on Enter and cancel on Escape (#170).
 
-use novaeffect_engine::Session;
-use novaeffect_ui_egui::NovaeffectApp;
 use egui::{Event, Key, Modifiers, PointerButton, Pos2, pos2};
 use egui_kittest::Harness;
 use egui_kittest::kittest::{NodeT, Queryable};
+use novaeffect_engine::Session;
+use novaeffect_ui_egui::NovaeffectApp;
 use serde_json::json;
 
 fn harness() -> (Harness<'static, NovaeffectApp>, u64) {

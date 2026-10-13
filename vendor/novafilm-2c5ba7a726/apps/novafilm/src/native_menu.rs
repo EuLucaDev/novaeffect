@@ -3,10 +3,10 @@
 
 use std::sync::mpsc::{Receiver, channel};
 
-use novafilm_ui_egui::NovafilmApp;
-use novafilm_ui_egui::menus::{MENUS, MenuItem as Item, menu_items};
 use muda::accelerator::Accelerator;
 use muda::{Menu, MenuEvent, MenuItem, PredefinedMenuItem, Submenu};
+use novafilm_ui_egui::NovafilmApp;
+use novafilm_ui_egui::menus::{MENUS, MenuItem as Item, menu_items};
 
 fn accel(s: &str) -> Option<Accelerator> {
     // Only shortcuts with a modifier become native key equivalents (single keys stay in-app so

@@ -3,11 +3,11 @@
 //! Timeline reaches the last of thousands of layers; the Progress panel lists the footage check
 //! started by a lazy open.
 
+use egui_kittest::Harness;
 use novaeffect_engine::Session;
 use novaeffect_engine::perf::{LargeSpec, large_project};
 use novaeffect_ui_egui::NovaeffectApp;
 use novaeffect_ui_egui::dock::PanelKind;
-use egui_kittest::Harness;
 use serde_json::json;
 
 fn spec() -> LargeSpec {
@@ -35,9 +35,8 @@ fn project_panel_scrolls_and_reveals_the_selection() {
     h.run_steps(3);
     // Far more rows than fit: a scroll bar, and the bottom rows aren't drawn yet.
     assert!(h.state().auto.find("project.vscroll").is_some());
-    let drawn = |h: &Harness<'_, NovaeffectApp>| {
-        h.state().auto.previous.iter().filter(|e| e.id.starts_with("project.item.") && e.id.matches('.').count() == 2).count()
-    };
+    let drawn =
+        |h: &Harness<'_, NovaeffectApp>| h.state().auto.previous.iter().filter(|e| e.id.starts_with("project.item.") && e.id.matches('.').count() == 2).count();
     let rows = drawn(&h);
     assert!(rows > 5 && rows < 80, "only the rows in view are drawn: {rows}");
     // Selecting an item (a command, an agent) scrolls it into view.
@@ -112,8 +111,7 @@ fn lazy_open_lists_the_footage_check_in_the_progress_panel() {
         std::thread::sleep(std::time::Duration::from_millis(10));
     }
     assert!(h.state().session.tasks.is_empty());
-    let missing =
-        h.state().session.project.items.values().filter(|i| matches!(&i.kind, novaeffect_engine::project::ItemKind::Footage(f) if f.missing)).count();
+    let missing = h.state().session.project.items.values().filter(|i| matches!(&i.kind, novaeffect_engine::project::ItemKind::Footage(f) if f.missing)).count();
     assert_eq!(missing, spec().footage);
     assert!(!h.state().session.is_dirty(), "the check doesn't modify the project");
     let _ = std::fs::remove_file(path);

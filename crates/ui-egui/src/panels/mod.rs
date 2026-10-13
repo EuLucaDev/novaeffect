@@ -60,10 +60,10 @@ pub mod viewers;
 pub mod waveform;
 
 use crate::i18n::tr;
+use egui::Rect;
 use novaeffect_engine::Session;
 use novaeffect_engine::project::Comp;
 use novaeffect_engine::time::Tick;
-use egui::Rect;
 
 use crate::NovaeffectApp;
 use crate::dock::PanelKind;

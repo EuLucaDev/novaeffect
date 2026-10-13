@@ -4,9 +4,9 @@
 //! Everything runs `footage.*` commands (state in `EditorState::footage_panel`).
 
 use crate::i18n::{tr, tr_args};
+use egui::{Align2, Color32, Rect, Sense, Stroke, pos2, vec2};
 use novaeffect_engine::project::{FootageKind, ItemKind};
 use novaeffect_engine::time::Tick;
-use egui::{Align2, Color32, Rect, Sense, Stroke, pos2, vec2};
 use serde_json::json;
 
 use super::panel_kit as kit;

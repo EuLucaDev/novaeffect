@@ -1,12 +1,12 @@
 //! Render Queue panel input: choosing a Render Settings template from an item's menu (#117).
 
+use egui::{Event, Modifiers, Pos2, pos2};
+use egui_kittest::Harness;
+use egui_kittest::kittest::Queryable;
 use novaeffect_engine::Session;
 use novaeffect_engine::project::render_queue::RenderQuality;
 use novaeffect_ui_egui::NovaeffectApp;
 use novaeffect_ui_egui::dock::PanelKind;
-use egui::{Event, Modifiers, Pos2, pos2};
-use egui_kittest::Harness;
-use egui_kittest::kittest::Queryable;
 use serde_json::json;
 use std::cell::RefCell;
 use std::rc::Rc;

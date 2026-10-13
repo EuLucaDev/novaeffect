@@ -1,13 +1,13 @@
 //! Headless checks for on-canvas text editing in the viewer and the Character / Paragraph panels
 //! acting on the selection (egui_kittest, UI logic only: no GPU needed).
 
+use egui::{Event, Key, Modifiers, PointerButton, Pos2};
+use egui_kittest::Harness;
 use novaeffect_engine::Session;
 use novaeffect_engine::commands::text_edit::layer_doc;
 use novaeffect_engine::project::LayerId;
 use novaeffect_ui_egui::NovaeffectApp;
 use novaeffect_ui_egui::dock::PanelKind;
-use egui::{Event, Key, Modifiers, PointerButton, Pos2};
-use egui_kittest::Harness;
 use serde_json::json;
 
 fn app() -> NovaeffectApp {

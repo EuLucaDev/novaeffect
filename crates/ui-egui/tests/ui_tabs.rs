@@ -2,12 +2,12 @@
 //! as its own Timeline tab (not a rename, and not in place of the comp shown), the tabs switch and
 //! close comps, and a dragged tab lands where its insertion mark shows.
 
+use egui::{Event, Pos2, pos2};
+use egui_kittest::Harness;
 use novaeffect_engine::Session;
 use novaeffect_engine::project::ItemId;
 use novaeffect_ui_egui::NovaeffectApp;
 use novaeffect_ui_egui::dock::{DockNode, PanelKind};
-use egui::{Event, Pos2, pos2};
-use egui_kittest::Harness;
 use serde_json::json;
 
 /// "Pre" and "Main" (Main holds Pre); only Main is open.

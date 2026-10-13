@@ -2,11 +2,11 @@
 //! (#158); the Time Navigator's ends drag to zoom and `;` toggles frame level / the whole comp
 //! (#159); markers dragged out of the composition marker bin (#275).
 
-use novaeffect_engine::Session;
-use novaeffect_ui_egui::NovaeffectApp;
 use egui::{Event, Modifiers, MouseWheelUnit, Pos2, pos2, vec2};
 use egui_kittest::Harness;
 use egui_kittest::kittest::Queryable;
+use novaeffect_engine::Session;
+use novaeffect_ui_egui::NovaeffectApp;
 use serde_json::json;
 
 /// A 10-minute comp with one solid, zoomed in on its start.

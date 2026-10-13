@@ -2,10 +2,10 @@
 //! with wgpu and writes PNGs when `EC_SNAPSHOT_DIR` is set (`cargo test -p novaeffect-ui-egui
 //! --test ui_3d -- --ignored`); the other test only runs the UI logic.
 
+use egui_kittest::Harness;
 use novaeffect_engine::Session;
 use novaeffect_engine::render::three_d::View3D;
 use novaeffect_ui_egui::NovaeffectApp;
-use egui_kittest::Harness;
 use serde_json::json;
 
 fn app() -> NovaeffectApp {

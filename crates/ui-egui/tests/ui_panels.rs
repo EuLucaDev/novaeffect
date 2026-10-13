@@ -4,12 +4,12 @@
 
 use std::sync::Arc;
 
-use novaeffect_engine::{Session, config::MemoryConfig};
-use novaeffect_ui_egui::NovaeffectApp;
-use novaeffect_ui_egui::dock::PanelKind;
 use egui::{Event, Pos2, pos2};
 use egui_kittest::Harness;
 use egui_kittest::kittest::Queryable;
+use novaeffect_engine::{Session, config::MemoryConfig};
+use novaeffect_ui_egui::NovaeffectApp;
+use novaeffect_ui_egui::dock::PanelKind;
 use serde_json::json;
 
 fn harness() -> Harness<'static, NovaeffectApp> {

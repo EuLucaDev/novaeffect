@@ -3,9 +3,9 @@
 use std::path::Path;
 use std::sync::Arc;
 
+use image::metadata::Orientation;
 use novaeffect_project::{AlphaMode, Footage, FootageKind};
 use novaeffect_time::{FrameRate, Tick};
-use image::metadata::Orientation;
 
 use crate::{MediaError, Result, ext_of, rate_from_fc};
 

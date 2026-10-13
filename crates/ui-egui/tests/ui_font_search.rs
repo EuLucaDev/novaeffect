@@ -1,8 +1,8 @@
 //! Real keyboard/pointer coverage for the font menus in both text panels.
-use novaeffect_engine::{Session, commands::text_edit::layer_doc, project::LayerId};
-use novaeffect_ui_egui::{NovaeffectApp, dock::PanelKind};
 use egui::{Event, Key, Modifiers, PointerButton};
 use egui_kittest::Harness;
+use novaeffect_engine::{Session, commands::text_edit::layer_doc, project::LayerId};
+use novaeffect_ui_egui::{NovaeffectApp, dock::PanelKind};
 use serde_json::json;
 
 fn click(h: &mut Harness<'_, NovaeffectApp>, id: &str) {

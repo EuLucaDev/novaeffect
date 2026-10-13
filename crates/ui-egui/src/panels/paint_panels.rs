@@ -4,8 +4,8 @@
 //! agents see and set exactly what the panels show.
 
 use crate::i18n::tr;
-use novaeffect_engine::effects::paint::{BRUSH_PRESETS, CHANNELS, DURATIONS, ERASE_MODES, MODES};
 use egui::{Align2, Color32, Rect, Sense, Stroke, StrokeKind, pos2, vec2};
+use novaeffect_engine::effects::paint::{BRUSH_PRESETS, CHANNELS, DURATIONS, ERASE_MODES, MODES};
 use serde_json::{Value, json};
 
 use crate::state::Tool;

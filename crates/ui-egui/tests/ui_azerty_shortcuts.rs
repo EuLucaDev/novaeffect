@@ -1,8 +1,8 @@
 //! Layout collisions must not dispatch both the physical and logical shortcuts.
-use novaeffect_engine::Session;
-use novaeffect_ui_egui::NovaeffectApp;
 use egui::{Event, Key, Modifiers, vec2};
 use egui_kittest::Harness;
+use novaeffect_engine::Session;
+use novaeffect_ui_egui::NovaeffectApp;
 use serde_json::json;
 
 #[test]

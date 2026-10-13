@@ -2,14 +2,14 @@
 //! automation ids, the on-viewer effect point control appears for the selected effect, and the
 //! crosshair / eyedropper picks set parameters from a viewer click.
 
+use egui_kittest::Harness;
+use egui_kittest::kittest::Queryable;
 use novaeffect_engine::Session;
 use novaeffect_engine::keyframe::Value as KV;
 use novaeffect_engine::project::{Layer, LayerId};
 use novaeffect_ui_egui::NovaeffectApp;
 use novaeffect_ui_egui::dock::PanelKind;
 use novaeffect_ui_egui::state::FxPick;
-use egui_kittest::Harness;
-use egui_kittest::kittest::Queryable;
 use serde_json::json;
 
 struct Ids {

@@ -11,8 +11,8 @@ use std::cell::RefCell;
 use std::collections::HashMap;
 use std::rc::Rc;
 
-use novaeffect_svg::{Affine, BezPath, Cap, FillRule, Join, Paint, Stroke};
 use kurbo::{PathEl, Point};
+use novaeffect_svg::{Affine, BezPath, Cap, FillRule, Join, Paint, Stroke};
 
 use crate::build::Builder;
 use crate::font::Font;

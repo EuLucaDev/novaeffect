@@ -5,10 +5,10 @@
 //! edits made in the dialog back, OK keeps them (one undo step per control drag).
 
 use crate::i18n::tr;
+use egui::vec2;
 use novaeffect_engine::keyframe::Value as KV;
 use novaeffect_engine::project::styles::{BLENDING, STYLES};
 use novaeffect_engine::project::{Layer, LayerId, ParamUi, Property};
-use egui::vec2;
 use serde_json::{Value, json};
 
 use crate::theme::Tokens;

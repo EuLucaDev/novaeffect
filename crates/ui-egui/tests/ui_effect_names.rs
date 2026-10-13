@@ -2,14 +2,14 @@
 //! Controls draw the catalog's name, while the effect ids, the property tree's group name, the
 //! automation labels and `effect.list` stay English.
 
+use egui::vec2;
+use egui_kittest::Harness;
+use egui_kittest::kittest::Queryable;
 use novaeffect_engine::Session;
 use novaeffect_engine::project::LayerId;
 use novaeffect_ui_egui::NovaeffectApp;
 use novaeffect_ui_egui::dock::PanelKind;
 use novaeffect_ui_egui::native_menu::{NativeNode, build as native_menu};
-use egui::vec2;
-use egui_kittest::Harness;
-use egui_kittest::kittest::Queryable;
 use serde_json::json;
 
 /// The effect under test, and the names the registry and the catalog give it.

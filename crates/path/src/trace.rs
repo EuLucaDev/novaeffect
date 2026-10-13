@@ -15,8 +15,8 @@
 
 use std::collections::HashMap;
 
-use novaeffect_keyframe::ShapePath;
 use kurbo::{Point, Vec2};
+use novaeffect_keyframe::ShapePath;
 
 use crate::fit::{fit_single, unit};
 

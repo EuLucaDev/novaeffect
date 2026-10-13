@@ -21,10 +21,10 @@
 //! `essential.instance.<id>.value`, `essential.export`…).
 
 use crate::i18n::{tr, tr_args};
+use egui::{Rect, RichText};
 use novaeffect_engine::keyframe::Value as KV;
 use novaeffect_engine::project::essential::{self, ControlType, EgControl, EgKind};
 use novaeffect_engine::project::{ItemId, ItemKind, LayerSource, ParamUi, Property};
-use egui::{Rect, RichText};
 use serde_json::{Value, json};
 
 use crate::panels::DragPayload;

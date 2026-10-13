@@ -38,11 +38,11 @@ use std::sync::mpsc::{Receiver, Sender};
 
 pub use control::ControlRequest;
 use dock::PanelKind;
+use frames::{FrameKey, Frames, RenderSource};
 use novaeffect_engine::Session;
 use novaeffect_engine::project::ItemId;
 use novaeffect_engine::render::RenderOpts;
 use novaeffect_engine::time::Tick;
-use frames::{FrameKey, Frames, RenderSource};
 use serde_json::json;
 use state::UiState;
 use theme::Tokens;

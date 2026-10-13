@@ -1,11 +1,11 @@
 //! Stepping the current time from the keyboard: Page Down / Page Up and Cmd+Right / Cmd+Left
 //! Arrow move one frame, with Shift ten.
 
+use egui::{Event, Key, Modifiers};
+use egui_kittest::Harness;
 use novaeffect_engine::Session;
 use novaeffect_ui_egui::NovaeffectApp;
 use novaeffect_ui_egui::dock::PanelKind;
-use egui::{Event, Key, Modifiers};
-use egui_kittest::Harness;
 use serde_json::json;
 
 fn key(h: &mut Harness<'_, NovaeffectApp>, key: Key, modifiers: Modifiers) {

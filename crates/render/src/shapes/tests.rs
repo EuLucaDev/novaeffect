@@ -206,11 +206,7 @@ fn gradient_stroke_paints_gradient_along_stroke() {
 fn fill_blend_mode_multiply() {
     let (p, cid) = shape_comp(|ids| {
         let mut top = build::shape_fill(ids, [0.5, 0.5, 0.5, 1.0]);
-        set(
-            &mut top,
-            "blend",
-            Value::Enum(novaeffect_color::BlendMode::ALL.iter().position(|m| *m == novaeffect_color::BlendMode::Multiply).unwrap() as u32),
-        );
+        set(&mut top, "blend", Value::Enum(novaeffect_color::BlendMode::ALL.iter().position(|m| *m == novaeffect_color::BlendMode::Multiply).unwrap() as u32));
         vec![build::shape_rect(ids, [40.0, 40.0], [0.0, 0.0], 0.0), top, build::shape_fill(ids, [1.0, 0.0, 0.0, 1.0])]
     });
     let c = frame(&p, cid).get(100, 50);

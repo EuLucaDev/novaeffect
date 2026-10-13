@@ -1,10 +1,10 @@
 //! Headless checks for the M13.5 long-tail UI: horizontal scrolling of the Timeline outline and
 //! Project panel columns (egui_kittest, UI logic only).
 
-use novaeffect_engine::Session;
-use novaeffect_ui_egui::NovaeffectApp;
 use egui::{Event, Pos2, Rect, pos2, vec2};
 use egui_kittest::Harness;
+use novaeffect_engine::Session;
+use novaeffect_ui_egui::NovaeffectApp;
 use serde_json::json;
 
 fn harness(w: f32) -> Harness<'static, NovaeffectApp> {

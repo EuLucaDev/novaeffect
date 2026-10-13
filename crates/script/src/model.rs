@@ -547,8 +547,7 @@ fn keys(s: &Session, a: &J) -> R {
         let stored = if out { &k.out_ease } else { &k.in_ease };
         let v: Vec<J> = (0..dims)
             .map(|d| {
-                let e =
-                    novaeffect_keyframe::side_ease(&p.keys, i, d, p.spatial, out).or_else(|| stored.get(d).or(stored.first()).copied()).unwrap_or_default();
+                let e = novaeffect_keyframe::side_ease(&p.keys, i, d, p.spatial, out).or_else(|| stored.get(d).or(stored.first()).copied()).unwrap_or_default();
                 json!({"speed": e.speed, "influence": e.influence * 100.0})
             })
             .collect();

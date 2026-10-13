@@ -15,11 +15,11 @@
 //!   Levels a histogram; Lumetri's curves, Colorama's output cycle, Glow's colour map and
 //!   Reshape's correspondence points have visual editors ([`super::fx_editors`]).
 
+use egui::{Align2, Color32, Rect, Sense, Stroke, pos2, vec2};
 use novaeffect_engine::geom::Mat3;
 use novaeffect_engine::keyframe::Value;
 use novaeffect_engine::project::{GroupKind, Layer, Node, ParamUi, PropGroup, Property};
 use novaeffect_engine::render::EvalCtx;
-use egui::{Align2, Color32, Rect, Sense, Stroke, pos2, vec2};
 use serde_json::json;
 
 use super::fx_widgets as fw;

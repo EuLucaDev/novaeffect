@@ -2,6 +2,8 @@
 //! click (point prompt), a drag (box prompt) re-prompting the same effect, Shift adding another,
 //! one undo step each (egui_kittest, UI logic only).
 
+use egui::{Event, Modifiers, Pos2, Rect, pos2, vec2};
+use egui_kittest::Harness;
 use novaeffect_engine::Session;
 use novaeffect_engine::effects::flatten_params;
 use novaeffect_engine::effects::object_matte as om;
@@ -10,8 +12,6 @@ use novaeffect_engine::project::{GroupKind, LayerId, PropGroup};
 use novaeffect_ui_egui::NovaeffectApp;
 use novaeffect_ui_egui::dock::PanelKind;
 use novaeffect_ui_egui::state::Tool;
-use egui::{Event, Modifiers, Pos2, Rect, pos2, vec2};
-use egui_kittest::Harness;
 use serde_json::json;
 
 fn harness() -> Harness<'static, NovaeffectApp> {

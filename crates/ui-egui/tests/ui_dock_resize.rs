@@ -1,11 +1,11 @@
 //! Shared pane resizing in the full application, including application shortcut ownership.
 
+use egui::{Event, Id, Key, Modifiers, PointerButton, Rect, pos2, vec2};
+use egui_kittest::Harness;
 use novaeffect_engine::Session;
 use novaeffect_ui_egui::NovaeffectApp;
 use novaeffect_ui_egui::dock::{DockNode, PanelKind, SplitSize};
 use novaeffect_ui_egui::theme::ThemeKind;
-use egui::{Event, Id, Key, Modifiers, PointerButton, Rect, pos2, vec2};
-use egui_kittest::Harness;
 use serde_json::json;
 
 fn snapshots(h: &mut Harness<'_, NovaeffectApp>, directory: Option<&std::path::Path>, phase: &str) {

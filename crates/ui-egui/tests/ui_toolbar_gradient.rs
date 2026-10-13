@@ -4,14 +4,14 @@
 //! options, a Solid Color swatch the colour picker, Alt-click still steps through the kinds, and
 //! with no such gradient selected the swatch opens the options as before.
 
+use egui::{Event, Modifiers, PointerButton, Pos2, pos2, vec2};
+use egui_kittest::Harness;
+use egui_kittest::kittest::Queryable;
 use novaeffect_engine::Session;
 use novaeffect_engine::keyframe::Value;
 use novaeffect_engine::project::{LayerId, PropGroup};
 use novaeffect_ui_egui::state::Tool;
 use novaeffect_ui_egui::{Dialog, NovaeffectApp};
-use egui::{Event, Modifiers, PointerButton, Pos2, pos2, vec2};
-use egui_kittest::Harness;
-use egui_kittest::kittest::Queryable;
 use serde_json::json;
 
 /// The Colors uid of the first `paint` ("gfill" / "gstroke") group in `g`, through nested groups.

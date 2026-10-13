@@ -1,9 +1,9 @@
 //! User-reported selection, Project deletion, and render-queue drop regressions.
-use novaeffect_engine::{Session, project::LayerId};
-use novaeffect_ui_egui::{Dialog, NovaeffectApp, dock::PanelKind};
 use egui::{Event, Modifiers, PointerButton, Pos2, Rect, pos2, vec2};
 use egui_kittest::Harness;
 use egui_kittest::kittest::Queryable as _;
+use novaeffect_engine::{Session, project::LayerId};
+use novaeffect_ui_egui::{Dialog, NovaeffectApp, dock::PanelKind};
 use serde_json::json;
 
 fn harness() -> Harness<'static, NovaeffectApp> {

@@ -2,13 +2,13 @@
 
 use std::sync::Arc;
 
+use egui::{Event, Id, Key, Modifiers, vec2};
+use egui_kittest::Harness;
 use novaeffect_engine::Session;
 use novaeffect_engine::config::{ConfigStore, DirConfig, MemoryConfig};
 use novaeffect_ui_egui::NovaeffectApp;
 use novaeffect_ui_egui::dock::{DockNode, PanelKind, SplitSize};
 use novaeffect_ui_egui::state::Tool;
-use egui::{Event, Id, Key, Modifiers, vec2};
-use egui_kittest::Harness;
 use serde_json::json;
 
 #[test]

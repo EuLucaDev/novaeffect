@@ -2,10 +2,10 @@
 //! windows (clicks reach the script's handlers), the branching History panel, and the Window /
 //! File ▸ Scripts menus listing scripts (egui_kittest, UI logic only).
 
-use novaeffect_ui_egui::NovaeffectApp;
-use novaeffect_ui_egui::dock::PanelKind;
 use egui::{Event, Rect, pos2, vec2};
 use egui_kittest::Harness;
+use novaeffect_ui_egui::NovaeffectApp;
+use novaeffect_ui_egui::dock::PanelKind;
 use serde_json::json;
 
 fn harness() -> Harness<'static, NovaeffectApp> {
@@ -116,8 +116,8 @@ fn panels_open_at_quit_dock_again_at_launch() {
 /// preset in its list eases the selected keyframes in one undo step.
 #[test]
 fn ease_presets_panel_eases_the_selected_keys_from_its_list() {
-    use novaeffect_engine::keyframe::{Ease, Interp};
     use egui_kittest::kittest::Queryable;
+    use novaeffect_engine::keyframe::{Ease, Interp};
     let mut h = harness();
     let s = &mut h.state_mut().session;
     let l = s.execute("layer.newSolid", json!({"name": "Box", "color": "#e04020", "width": 80, "height": 80})).unwrap()["layer"].as_u64().unwrap();

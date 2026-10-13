@@ -3,8 +3,8 @@
 //! (the flow of nested comps, click to open) and the Composition Mini-Flowchart popup (Tab).
 
 use crate::i18n::{tr, tr_args};
-use novaeffect_engine::project::{ItemId, LayerSource, Project};
 use egui::{Align2, Color32, Rect, Sense, Stroke, pos2, vec2};
+use novaeffect_engine::project::{ItemId, LayerSource, Project};
 use serde_json::json;
 
 use crate::theme::Tokens;

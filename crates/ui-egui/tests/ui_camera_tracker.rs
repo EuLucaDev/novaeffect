@@ -3,12 +3,12 @@
 //! The solve is a synthetic one written into the effect (the analysis itself is tested in the
 //! engine and track crates).
 
+use egui_kittest::Harness;
 use novaeffect_engine::Session;
 use novaeffect_engine::effects::camera_tracker as ct;
 use novaeffect_engine::track::camtrack::{CameraSolve, ShotType, SolveMethod, SolvedFrame, SolvedPoint};
 use novaeffect_ui_egui::NovaeffectApp;
 use novaeffect_ui_egui::dock::PanelKind;
-use egui_kittest::Harness;
 use serde_json::json;
 
 const W: f64 = 640.0;

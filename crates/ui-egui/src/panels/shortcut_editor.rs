@@ -17,8 +17,8 @@
 //! `shortcuts.resetPreset`, `shortcuts.close`.
 
 use crate::i18n::{tr, tr_args};
-use novaeffect_engine::shortcuts::{APP_SCOPE, Bindable, DEFAULT_PRESET, normalize};
 use egui::{Align2, Color32, Rect, RichText, Sense, Stroke, StrokeKind, pos2, vec2};
+use novaeffect_engine::shortcuts::{APP_SCOPE, Bindable, DEFAULT_PRESET, normalize};
 use serde_json::{Value, json};
 
 use crate::theme::Tokens;

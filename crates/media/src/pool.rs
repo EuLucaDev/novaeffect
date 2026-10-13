@@ -4,12 +4,12 @@ use std::collections::{BTreeMap, HashMap, HashSet};
 use std::sync::atomic::{AtomicBool, AtomicU64, Ordering};
 use std::sync::{Arc, Condvar, Mutex, OnceLock};
 
+use image::metadata::Orientation;
 use novaeffect_project::{AlphaMode, Footage, FootageKind, ItemId};
 use novaeffect_raster::{Image, Px};
 use novaeffect_render::{FloatCurve, FootageSource};
 use novaeffect_time::{FrameRate, TICKS_PER_SECOND, Tick};
 use novafilm_media::{FrameRequest, SharedSource};
-use image::metadata::Orientation;
 
 use crate::convert::{AlphaOp, dynamic_to_image, frame_to_image_in, frame_to_image_scaled, turned};
 use crate::gif_anim::{self, Anim};

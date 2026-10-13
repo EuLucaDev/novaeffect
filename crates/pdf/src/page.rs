@@ -7,10 +7,10 @@
 use std::collections::HashMap;
 use std::rc::Rc;
 
+use kurbo::{Point, Shape as _};
 use novaeffect_svg::{
     Affine, BezPath, BlendMode, Cap, FillRule, Gradient, GradientKind, Group, Image as SvgImage, Join, Node, Paint, SoftMask, Spread, Stroke,
 };
-use kurbo::{Point, Shape as _};
 
 use crate::build::Builder;
 use crate::color::{Cs, Func, color_space, text_string};

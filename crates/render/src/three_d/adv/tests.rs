@@ -499,8 +499,7 @@ fn track_mattes_in_advanced_3d() {
     assert!(inside[3] > 0.99 && inside[0] > 0.99, "{inside:?}");
     assert!(outside[3] < 0.01, "{outside:?}");
     // An inverted alpha matte keeps the outside instead.
-    p.comp_mut(cid).unwrap().layers[1].track_matte =
-        Some(novaeffect_project::TrackMatte { layer: matte, kind: novaeffect_project::MatteKind::AlphaInverted });
+    p.comp_mut(cid).unwrap().layers[1].track_matte = Some(novaeffect_project::TrackMatte { layer: matte, kind: novaeffect_project::MatteKind::AlphaInverted });
     let img = render(&p, cid);
     assert!(img.data[30 * 120 + 30][3] < 0.01 && img.data[70 * 120 + 100][3] > 0.99);
 }

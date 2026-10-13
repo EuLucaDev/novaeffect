@@ -2,13 +2,13 @@
 //! comp goes to an unlocked viewer (a new one when every viewer is locked); a click on another
 //! viewer makes it the active one; closing a viewer forgets it.
 
+use egui::{Event, pos2};
+use egui_kittest::Harness;
 use novaeffect_engine::Session;
 use novaeffect_engine::project::ItemId;
 use novaeffect_ui_egui::NovaeffectApp;
 use novaeffect_ui_egui::dock::{PanelKind, Zone};
 use novaeffect_ui_egui::panels::viewers;
-use egui::{Event, pos2};
-use egui_kittest::Harness;
 use serde_json::{Value, json};
 
 fn invoke(h: &mut Harness<'_, NovaeffectApp>, id: &str, p: Value) {

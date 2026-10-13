@@ -3,11 +3,11 @@
 //! that existed before the Gradient Editor, so it runs (and fails) on the code without it; the
 //! editor itself is tested in `ui_gradient_editor`.
 
+use egui::{Event, Modifiers, PointerButton, pos2};
+use egui_kittest::Harness;
 use novaeffect_engine::Session;
 use novaeffect_engine::project::{LayerId, PropGroup};
 use novaeffect_ui_egui::NovaeffectApp;
-use egui::{Event, Modifiers, PointerButton, pos2};
-use egui_kittest::Harness;
 use serde_json::json;
 
 /// The uids from the layer's root down to the Gradient Fill group, and its Colors property.

@@ -53,9 +53,8 @@ fn step_mask(s: &mut Session, p: &Value, dir: i64) -> Result<Value> {
     let groups: Vec<_> = masks.groups().collect();
     let n = groups.len() as i64;
     // The selected mask: its group, or a property inside it.
-    let selected = |g: &novaeffect_project::PropGroup| {
-        s.state.selected_props.iter().any(|(l, uid)| *l == lid && (g.find_group(*uid).is_some() || g.find(*uid).is_some()))
-    };
+    let selected =
+        |g: &novaeffect_project::PropGroup| s.state.selected_props.iter().any(|(l, uid)| *l == lid && (g.find_group(*uid).is_some() || g.find(*uid).is_some()));
     let i = match groups.iter().position(|g| selected(g)) {
         Some(i) => (i as i64 + dir).rem_euclid(n.max(1)),
         None if dir > 0 => 0,

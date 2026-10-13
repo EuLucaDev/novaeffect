@@ -5,12 +5,12 @@
 //!
 //! Every edit is an engine command (`keys.set`, `keys.setEase`, `keys.select`, `keys.*`).
 
+use egui::{Align2, Color32, Pos2, Rect, Sense, Stroke, StrokeKind, pos2, vec2};
 use novaeffect_engine::KeyRef;
 use novaeffect_engine::keyframe::{Interp, Value, side_ease};
 use novaeffect_engine::project::{Comp, Layer, LayerId, Property};
 use novaeffect_engine::render::EvalCtx;
 use novaeffect_engine::time::Tick;
-use egui::{Align2, Color32, Pos2, Rect, Sense, Stroke, StrokeKind, pos2, vec2};
 use serde_json::json;
 
 use super::timeline::TMap;
@@ -233,17 +233,7 @@ impl ButtonBar {
     }
 }
 
-fn text_button(
-    app: &mut NovaeffectApp,
-    ui: &mut egui::Ui,
-    p: &egui::Painter,
-    bar: &mut ButtonBar,
-    y: f32,
-    label: &str,
-    on: bool,
-    id: &str,
-    tip: &str,
-) -> bool {
+fn text_button(app: &mut NovaeffectApp, ui: &mut egui::Ui, p: &egui::Painter, bar: &mut ButtonBar, y: f32, label: &str, on: bool, id: &str, tip: &str) -> bool {
     let t = app.tokens;
     let w = p.layout_no_wrap(label.to_string(), Tokens::ui(11.0), t.text).size().x + 14.0;
     // Once one button overflows, the rest follow it into the menu (they keep their order).

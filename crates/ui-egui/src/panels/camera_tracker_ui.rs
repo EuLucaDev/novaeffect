@@ -16,6 +16,7 @@
 use crate::i18n::{tr, tr_args};
 use std::sync::Arc;
 
+use egui::{Align2, Color32, Pos2, Rect, Sense, Stroke, pos2, vec2};
 use novaeffect_engine::Session;
 use novaeffect_engine::effects::camera_tracker as ct;
 use novaeffect_engine::geom::{Mat3, vec2 as gv2};
@@ -23,7 +24,6 @@ use novaeffect_engine::keyframe::Value;
 use novaeffect_engine::project::{Comp, Layer, LayerId, PropGroup, Uid};
 use novaeffect_engine::render::EvalCtx;
 use novaeffect_engine::track::camtrack::{CameraSolve, CameraTracks, Target, point_color};
-use egui::{Align2, Color32, Pos2, Rect, Sense, Stroke, pos2, vec2};
 use serde_json::json;
 
 use super::viewer::ViewerMap;

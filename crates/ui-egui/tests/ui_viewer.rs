@@ -2,14 +2,14 @@
 //! interest drawing, rulers and guides, snapping, the shape Pen and motion-path key drags
 //! (egui_kittest, UI logic only).
 
+use egui::{Event, Pos2, Rect, pos2, vec2};
+use egui_kittest::Harness;
+use egui_kittest::kittest::Queryable;
 use novaeffect_engine::Session;
 use novaeffect_engine::commands::shape_tool::PaintKind;
 use novaeffect_engine::project::LayerId;
 use novaeffect_ui_egui::NovaeffectApp;
 use novaeffect_ui_egui::state::Tool;
-use egui::{Event, Pos2, Rect, pos2, vec2};
-use egui_kittest::Harness;
-use egui_kittest::kittest::Queryable;
 use serde_json::json;
 
 fn app() -> NovaeffectApp {
@@ -2037,9 +2037,8 @@ fn vertex_tools_edit_motion_path_keyframes() {
     s.execute("prop.addKey", json!({"layer": box_id.0, "path": "transform/position", "time": 2.0, "value": [500, 100, 0]})).unwrap();
     s.execute("view.snapping", json!({"value": false})).unwrap();
     s.set_time(novaeffect_engine::time::Tick::from_seconds_f64(3.0));
-    let keys = |h: &Harness<'_, NovaeffectApp>| {
-        h.state().session.active_comp().unwrap().layer(box_id).unwrap().props.prop("transform/position").unwrap().keys.clone()
-    };
+    let keys =
+        |h: &Harness<'_, NovaeffectApp>| h.state().session.active_comp().unwrap().layer(box_id).unwrap().props.prop("transform/position").unwrap().keys.clone();
     h.state_mut().ui.tool = Tool::PenAdd;
     h.run_steps(3);
     let mid = screen(&h, [300.0, 100.0]);

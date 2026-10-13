@@ -2,12 +2,12 @@
 //! its Composition panel even when it was closed (#90); adding an effect, or double-clicking one
 //! in the Timeline, brings up Effect Controls (#87).
 
+use egui::{Event, Pos2, pos2};
+use egui_kittest::Harness;
 use novaeffect_engine::Session;
 use novaeffect_engine::project::ItemId;
 use novaeffect_ui_egui::NovaeffectApp;
 use novaeffect_ui_egui::dock::{DockNode, PanelKind};
-use egui::{Event, Pos2, pos2};
-use egui_kittest::Harness;
 use serde_json::json;
 
 /// Comp "Main" (open) holding a solid, and comp "Other" (not open).

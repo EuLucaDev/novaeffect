@@ -2,10 +2,10 @@
 //! adapter); run with
 //! `RQ_SNAPSHOT=/abs/out.png cargo test -p novaeffect-ui-egui --test render_queue_snapshot -- --ignored`.
 
+use egui_kittest::Harness;
 use novaeffect_engine::Session;
 use novaeffect_engine::project::render_queue::RenderStatus;
 use novaeffect_ui_egui::NovaeffectApp;
-use egui_kittest::Harness;
 use serde_json::json;
 
 #[test]

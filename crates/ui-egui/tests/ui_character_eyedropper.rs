@@ -1,12 +1,12 @@
 //! Character Fill and Stroke can sample a displayed Composition pixel.
+use egui::{Event, Modifiers, PointerButton, Pos2, pos2, vec2};
+use egui_kittest::Harness;
 use novaeffect_engine::{Session, commands::text_edit::layer_doc, project::LayerId};
 use novaeffect_ui_egui::{
     NovaeffectApp,
     dock::{DockNode, PanelKind, SplitSize},
     panels::viewer::comp_to_screen,
 };
-use egui::{Event, Modifiers, PointerButton, Pos2, pos2, vec2};
-use egui_kittest::Harness;
 use serde_json::json;
 
 fn click(h: &mut Harness<'_, NovaeffectApp>, pos: Pos2) {

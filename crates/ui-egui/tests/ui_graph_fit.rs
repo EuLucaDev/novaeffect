@@ -3,9 +3,9 @@
 //! layer isn't selected), else Fit All Graphs to View. It used to open on an empty 0–100 range
 //! or with the curves off-view.
 
+use egui_kittest::Harness;
 use novaeffect_engine::Session;
 use novaeffect_ui_egui::NovaeffectApp;
-use egui_kittest::Harness;
 use serde_json::json;
 
 /// A 20 s comp whose Box layer has Rotation keys 300° at 8 s and 720° at 12 s; the Timeline is

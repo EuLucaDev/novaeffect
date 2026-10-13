@@ -1,8 +1,8 @@
 //! #1118: a preview with Video off in the Preview panel says so while it plays.
 
+use egui_kittest::Harness;
 use novaeffect_engine::Session;
 use novaeffect_ui_egui::NovaeffectApp;
-use egui_kittest::Harness;
 use serde_json::json;
 
 fn frame(h: &Harness<'_, NovaeffectApp>) -> i64 {

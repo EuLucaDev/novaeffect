@@ -57,11 +57,11 @@ use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
 pub use commands::{CommandSpec, command_specs, find as find_command};
+pub use media_pool::MediaPool;
 pub use novafilm_export as export;
 pub use novafilm_project as project;
 pub use novafilm_render as render;
 pub use novafilm_time as time;
-pub use media_pool::MediaPool;
 
 #[derive(Debug, thiserror::Error)]
 pub enum EngineError {

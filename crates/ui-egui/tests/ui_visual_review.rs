@@ -1,8 +1,8 @@
 //! Opt-in visual review of every built-in panel, workspaces and common dialogs.
 //! Original fixture; captures are review outputs, not shipped assets.
+use egui_kittest::Harness;
 use novaeffect_engine::Session;
 use novaeffect_ui_egui::{Dialog, NovaeffectApp, dock::PanelKind};
-use egui_kittest::Harness;
 use serde_json::json;
 
 #[test]

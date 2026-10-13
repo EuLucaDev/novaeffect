@@ -1,8 +1,8 @@
 //! Right-click actions in the blank Project and Timeline areas, and on Timeline property names.
-use novaeffect_engine::Session;
-use novaeffect_ui_egui::{Dialog, NovaeffectApp, dock::PanelKind};
 use egui::{Event, Modifiers, PointerButton, Pos2, Rect, pos2, vec2};
 use egui_kittest::{Harness, kittest::Queryable as _};
+use novaeffect_engine::Session;
+use novaeffect_ui_egui::{Dialog, NovaeffectApp, dock::PanelKind};
 use serde_json::json;
 
 fn harness() -> Harness<'static, NovaeffectApp> {
