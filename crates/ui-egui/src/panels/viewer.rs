@@ -840,6 +840,19 @@ pub fn show(app: &mut NovaeffectApp, ui: &mut egui::Ui, rect: Rect) {
     let origin = snap_to_pixels(center - vec2(cw * zoom / 2.0, ch * zoom / 2.0), ppp);
     let map = ViewerMap { origin, zoom, comp: [cw, ch], area };
     ctx.data_mut(|d| d.insert_temp(map_id(), map));
+    // Colaboração: o mouse vai em pixels da composição, e só aparece para quem está nela.
+    #[cfg(not(target_arch = "wasm32"))]
+    {
+        app.live.view = Some(crate::live_ui::LiveView::new(
+            area,
+            format!("comp:{}", cid.0),
+            move |p| {
+                let c = map.to_comp(p);
+                (c[0], c[1])
+            },
+            move |x, y| map.to_screen([x, y]),
+        ));
+    }
     let comp_rect = Rect::from_min_size(origin, vec2(cw * zoom, ch * zoom));
     let painter = p.with_clip_rect(area);
     // Settings ▸ 3D ▸ Extended Viewer: custom 3D views (and Draft 3D) render the visible

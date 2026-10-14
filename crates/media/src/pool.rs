@@ -392,7 +392,7 @@ impl MediaPool {
 
     /// The file actually read for `path` (its alias, or itself).
     pub fn real_path(&self, path: &str) -> String {
-        lock(&self.inner.aliases).get(path).cloned().unwrap_or_else(|| path.to_string())
+        self.inner.real_path(path)
     }
 
     pub fn set_conform_folder(&self, folder: Option<std::path::PathBuf>) {
@@ -558,6 +558,13 @@ impl MediaPool {
         }
         let (tw, th) = (((w as f64 * s).round() as u32).max(1), ((h as f64 * s).round() as u32).max(1));
         Ok(novaeffect_raster::resample(&img, tw, th))
+    }
+}
+
+impl Inner {
+    /// The file actually read for `path` (its alias, or itself).
+    fn real_path(&self, path: &str) -> String {
+        lock(&self.aliases).get(path).cloned().unwrap_or_else(|| path.to_string())
     }
 }
 
