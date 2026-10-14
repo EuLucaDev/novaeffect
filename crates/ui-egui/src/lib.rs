@@ -22,6 +22,8 @@ pub mod gpu_failure;
 pub mod header;
 pub mod i18n;
 pub mod icons;
+#[cfg(not(target_arch = "wasm32"))]
+pub mod live_ui;
 pub mod menu_keys;
 pub mod menus;
 pub mod native_menu;
@@ -258,6 +260,8 @@ impl Playback {
 }
 
 pub struct NovaeffectApp {
+    #[cfg(not(target_arch = "wasm32"))]
+    pub live: live_ui::LiveUi,
     pub session: Session,
     pub ui: UiState,
     workspace_store: workspace_state::WorkspaceStore,
@@ -368,6 +372,8 @@ impl NovaeffectApp {
         let mut ui = UiState::default();
         let workspace_store = workspace_state::WorkspaceStore::load(session.config.as_deref(), &mut ui);
         NovaeffectApp {
+            #[cfg(not(target_arch = "wasm32"))]
+            live: live_ui::LiveUi::default(),
             session,
             ui,
             workspace_store,
@@ -1611,6 +1617,12 @@ impl NovaeffectApp {
 
     fn frame(&mut self, ui: &mut egui::Ui) {
         let ctx = ui.ctx().clone();
+        #[cfg(not(target_arch = "wasm32"))]
+        {
+            live_ui::pump(self, &ctx);
+            live_ui::bar(self, ui);
+            live_ui::window(self, &ctx);
+        }
         self.apply_gpu_failure(&ctx);
         self.run_dialog_answers();
         self.auto.begin_frame();

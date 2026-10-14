@@ -128,7 +128,7 @@ fn main() -> eframe::Result {
     // feed the compatibility report.
     novaeffect_engine::logging::install();
     novaeffect_engine::logging::install_panic_hook();
-    let Args { control_port, files, demo, home } = match parse_args(std::env::args().skip(1), std::env::var("NOVAEFFECT_CONTROL_PORT")) {
+    let Args { control_port, files, demo, home } = match parse_args(std::env::args().skip(1).filter(|arg| !novaeffect_ui_egui::live_ui::is_invite_arg(arg)), std::env::var("NOVAEFFECT_CONTROL_PORT")) {
         Ok(Some(args)) => args,
         Ok(None) => {
             println!("novaeffect {}", env!("CARGO_PKG_VERSION"));
@@ -247,6 +247,7 @@ fn main() -> eframe::Result {
             // reported in a toast and forgotten).
             let _ = session.execute("window.restoreScriptPanels", json!({}));
             let mut app = NovaeffectApp::new(session);
+            app.live.pending_join = novaeffect_ui_egui::live_ui::launch_invite();
             app.set_gpu_failure_bridge(gpu_failures);
             app.ui.start_screen = show_home;
             if let Some(n) = notice {

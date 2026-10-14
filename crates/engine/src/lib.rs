@@ -22,6 +22,7 @@ pub mod history;
 pub mod jobs;
 pub mod learn;
 pub mod links;
+pub mod live;
 pub mod logging;
 pub mod mask_track;
 pub mod media_browser;
@@ -385,6 +386,8 @@ pub enum Event {
 }
 
 pub struct Session {
+    /// Colaboração em tempo real (Nova Live), ver `live`.
+    pub live: live::LiveState,
     pub project: Arc<Project>,
     pub history: History,
     pub revision: u64,
@@ -546,6 +549,7 @@ impl Default for Session {
     fn default() -> Self {
         let project = Arc::new(Project::default());
         Session {
+            live: live::LiveState::default(),
             saved_project: project.clone(),
             project,
             history: History::default(),
@@ -630,9 +634,16 @@ impl Session {
                 return Err(EngineError::Disabled(id.to_string(), why));
             }
         }
+        self.live.depth += 1;
+        let live_ctx = (self.live.depth == 1 && self.live.on).then(|| live::context(&self.state));
         // Last-resort guard: a panicking command reports an error instead of crashing the app.
-        let r = guard::guarded(&format!("command `{id}`"), || (spec.run)(self, &params))?;
+        let r = guard::guarded(&format!("command `{id}`"), || (spec.run)(self, &params));
+        self.live.depth -= 1;
+        let r = r?;
         self.learn_observe(id, &params);
+        if let Some(ctx) = live_ctx {
+            self.live_record(id, &params, spec.journal, ctx);
+        }
         if spec.journal {
             self.journal.push((id.to_string(), params));
             if self.journal.len() > 10_000 {
@@ -1118,6 +1129,8 @@ impl Session {
 
     /// Replace the whole project (open/new), resetting history and state.
     pub fn replace_project(&mut self, mut p: Project, path: Option<String>) {
+        self.live.on = false;
+        self.live.outbox.clear();
         if self.stop_render()
             && let Some(mut job) = self.render_job.take()
         {
