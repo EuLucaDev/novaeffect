@@ -186,6 +186,9 @@ struct Inner {
     opened: AtomicU64,
     /// In-memory files registered with `add_bytes` (web builds, tests).
     files: Mutex<HashMap<String, Arc<[u8]>>>,
+    /// Paths read from another file (media received in a collaboration session: the project
+    /// keeps the sender's path, the copy lives in the receiver's cache).
+    aliases: Mutex<HashMap<String, String>>,
     /// Parsed 3D models by path (`None`: failed to load; not retried until `forget`).
     models: Mutex<HashMap<String, Option<Arc<novaeffect_model::Model>>>>,
     /// Decoded animated GIFs and WebPs by path, loaded by the first caller while the others wait (an
@@ -267,6 +270,7 @@ impl MediaPool {
             inner: Arc::new(Inner {
                 sources: Mutex::default(),
                 files: Mutex::default(),
+                aliases: Mutex::default(),
                 models: Mutex::default(),
                 gifs: Mutex::default(),
                 cache: Mutex::default(),
@@ -380,6 +384,17 @@ impl MediaPool {
     /// Settings ▸ Disk ▸ Conformed Audio Folder: write each footage file's decoded audio there
     /// once per sample rate (raw interleaved stereo `f32`) and read it back instead of decoding
     /// again. `None` turns it off.
+    /// Read `path` from `local` from now on (and forget what was decoded from it).
+    pub fn set_alias(&self, path: &str, local: &str) {
+        lock(&self.inner.aliases).insert(path.to_string(), local.to_string());
+        self.forget(path);
+    }
+
+    /// The file actually read for `path` (its alias, or itself).
+    pub fn real_path(&self, path: &str) -> String {
+        lock(&self.inner.aliases).get(path).cloned().unwrap_or_else(|| path.to_string())
+    }
+
     pub fn set_conform_folder(&self, folder: Option<std::path::PathBuf>) {
         *lock(&self.inner.conform) = folder;
     }
@@ -389,7 +404,7 @@ impl MediaPool {
     pub fn conformed_path(&self, path: &str, rate: u32) -> Option<std::path::PathBuf> {
         use std::hash::{Hash, Hasher};
         let folder = lock(&self.inner.conform).clone()?;
-        let meta = std::fs::metadata(path).ok()?;
+        let meta = std::fs::metadata(self.real_path(path)).ok()?;
         let mut h = std::collections::hash_map::DefaultHasher::new();
         (CONFORM_VERSION, path, meta.len(), meta.modified().ok()).hash(&mut h);
         Some(folder.join(format!("{:016x}_{rate}.ecaf", h.finish())))
@@ -578,7 +593,7 @@ impl Inner {
         if let Some(b) = lock(&self.files).get(path) {
             return Ok(b.clone());
         }
-        std::fs::read(path).map(Into::into).map_err(|e| MediaError::Io(format!("{path}: {e}")))
+        std::fs::read(self.real_path(path)).map(Into::into).map_err(|e| MediaError::Io(format!("{path}: {e}")))
     }
 
     /// The opened movie/audio source for `path`. The first caller opens it, outside the map's
@@ -598,7 +613,8 @@ impl Inner {
             // Files on disk are read in place (the index, then samples on demand) rather than
             // whole; in-memory files (`add_bytes`) and wasm32 builds open from bytes.
             let in_memory = lock(&self.files).contains_key(&**path);
-            let file = std::path::Path::new(&**path);
+            let real = self.real_path(path);
+            let file = std::path::Path::new(&real);
             let in_place = if in_memory { None } else { crate::stream::open_source(file) };
             let in_place = in_place.map(|src| {
                 let turn = crate::stream::movie_header(file).map_or(Orientation::NoTransforms, |h| crate::probe::video_turn(&h));
@@ -849,6 +865,9 @@ impl FootageSource for MediaPool {
     }
     fn forget(&self, path: &str) {
         MediaPool::forget(self, path);
+    }
+    fn set_alias(&self, path: &str, local: &str) {
+        MediaPool::set_alias(self, path, local);
     }
     fn cache_budget(&self) -> Option<usize> {
         Some(self.budget())

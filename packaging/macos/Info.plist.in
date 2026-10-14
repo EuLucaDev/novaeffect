@@ -125,5 +125,16 @@
     </dict>
   </array>
 
+  <key>CFBundleURLTypes</key>
+  <array>
+    <dict>
+      <key>CFBundleURLName</key>
+      <string>br.com.novafoods.novaeffect.invite</string>
+      <key>CFBundleTypeRole</key>
+      <string>Editor</string>
+      <key>CFBundleURLSchemes</key>
+      <array><string>novaeffect</string></array>
+    </dict>
+  </array>
 </dict>
 </plist>

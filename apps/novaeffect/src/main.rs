@@ -123,6 +123,8 @@ fn control_port(name: &str, value: Option<&str>) -> Result<u16, String> {
 }
 
 fn main() -> eframe::Result {
+    #[cfg(not(target_arch = "wasm32"))]
+    novaeffect_ui_egui::live_ui::install_link_handler();
     // First, so the panic hook and every start-up warning are recorded. Records go to stderr
     // and the session log; Help ▸ Enable Logging writes through this logger too, and warnings
     // feed the compatibility report.

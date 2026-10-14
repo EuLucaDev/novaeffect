@@ -3,15 +3,19 @@
 //! - Comandos do diário viram [`LiveChange::Op`] com o estado de edição de quem editou
 //!   (composição ativa, camadas selecionadas, tempo), para o colega rodar o mesmo comando no mesmo lugar.
 //! - Qualquer outra mudança do projeto (desfazer, refazer, gestos) vira [`LiveChange::Replace`].
-//! - O estado de edição de cada pessoa continua dela. A mídia (arquivos de vídeo, áudio, imagem)
-//!   fica no computador de cada um: o projeto sincroniza a montagem; mídia que falta aparece offline.
+//! - O estado de edição de cada pessoa continua dela.
+//! - Mídias (vídeo, áudio, imagem): o projeto guarda o caminho de quem importou. Quem não tem o
+//!   arquivo recebe uma cópia pela sessão ([`Session::live_media_ready`]); o projeto continua
+//!   igual em todos e cada um lê a cópia local no lugar do caminho.
 
-use std::sync::Arc;
+use std::collections::HashMap;
+use std::path::{Path, PathBuf};
+use std::sync::{Arc, RwLock};
 
-use novaeffect_project::Project;
+use novaeffect_project::{ItemKind, Project};
 use serde_json::{Value, json};
 
-use crate::{EditorState, EngineError, Result, Session};
+use crate::{EditorState, EngineError, Result, Services, Session};
 
 #[derive(Clone, Debug, PartialEq)]
 pub enum LiveChange {
@@ -28,6 +32,57 @@ pub struct LiveState {
     pub(crate) seen: Option<Arc<Project>>,
     /// Comandos rodando agora (comandos que chamam comandos): só o de fora é replicado.
     pub(crate) depth: u32,
+    /// Mídias recebidas: caminho no projeto → cópia local (continua valendo depois da sessão).
+    pub aliases: MediaAliases,
+}
+
+/// Caminho de mídia do projeto → arquivo local recebido numa sessão.
+#[derive(Clone, Debug, Default)]
+pub struct MediaAliases(Arc<RwLock<HashMap<String, String>>>);
+
+impl MediaAliases {
+    pub fn get(&self, path: &str) -> Option<String> {
+        self.0.read().unwrap_or_else(|e| e.into_inner()).get(path).cloned()
+    }
+    pub fn set(&self, path: &str, local: &str) {
+        self.0.write().unwrap_or_else(|e| e.into_inner()).insert(path.to_string(), local.to_string());
+    }
+}
+
+/// Os serviços do app, lendo a cópia recebida no lugar do caminho do projeto.
+struct AliasServices {
+    inner: Arc<dyn Services>,
+    aliases: MediaAliases,
+}
+
+impl AliasServices {
+    fn map(&self, path: &str) -> String {
+        self.aliases.get(path).unwrap_or_else(|| path.to_string())
+    }
+}
+
+impl Services for AliasServices {
+    fn read_file(&self, path: &str) -> std::io::Result<Vec<u8>> {
+        self.inner.read_file(&self.map(path))
+    }
+    fn write_file(&self, path: &str, data: &[u8]) -> std::io::Result<()> {
+        self.inner.write_file(path, data)
+    }
+    fn exists(&self, path: &str) -> bool {
+        self.inner.exists(&self.map(path))
+    }
+    fn stamp(&self, path: &str) -> Option<(u64, u128)> {
+        self.inner.stamp(&self.map(path))
+    }
+    fn store_file(&self, path: &str, data: &[u8]) -> std::io::Result<()> {
+        self.inner.store_file(path, data)
+    }
+    fn list_dir(&self, dir: &str) -> Vec<String> {
+        self.inner.list_dir(dir)
+    }
+    fn is_dir(&self, path: &str) -> bool {
+        self.inner.is_dir(path)
+    }
 }
 
 fn err(e: impl std::fmt::Display) -> EngineError {
@@ -51,12 +106,51 @@ fn remote_command_allowed(cmd: &str) -> bool {
 
 impl Session {
     pub fn live_start(&mut self) -> Result<()> {
-        self.live = LiveState { on: true, seen: Some(self.project.clone()), ..LiveState::default() };
+        let aliases = self.live.aliases.clone();
+        self.services = Arc::new(AliasServices { inner: self.services.clone(), aliases: aliases.clone() });
+        self.live = LiveState { on: true, seen: Some(self.project.clone()), aliases, ..LiveState::default() };
         Ok(())
     }
 
     pub fn live_stop(&mut self) {
-        self.live = LiveState::default();
+        let aliases = self.live.aliases.clone();
+        self.live = LiveState { aliases, ..LiveState::default() };
+    }
+
+    /// Arquivos que o projeto usa (footage e proxies), pelo caminho guardado no projeto.
+    pub fn live_media(&self) -> Vec<String> {
+        let mut out: Vec<String> = Vec::new();
+        for item in self.project.items.values() {
+            let own = match &item.kind {
+                ItemKind::Footage(f) => Some(&f.path),
+                _ => None,
+            };
+            for path in own.into_iter().chain(item.proxy.as_ref().map(|p| &p.footage.path)) {
+                if !path.is_empty() && !out.contains(path) {
+                    out.push(path.clone());
+                }
+            }
+        }
+        out
+    }
+
+    /// A mídia existe aqui (no caminho ou como cópia recebida)?
+    pub fn live_media_available(&self, path: &str) -> bool {
+        self.services.exists(path)
+    }
+
+    /// O arquivo local da mídia, para enviar a um colega (só se estiver aqui).
+    pub fn live_media_file(&self, path: &str) -> Option<PathBuf> {
+        let local = self.live.aliases.get(path).unwrap_or_else(|| path.to_string());
+        Path::new(&local).is_file().then(|| PathBuf::from(local))
+    }
+
+    /// A mídia chegou: o projeto passa a ler `local` no lugar de `path`.
+    pub fn live_media_ready(&mut self, path: &str, local: &Path) {
+        let local = local.to_string_lossy();
+        self.live.aliases.set(path, &local);
+        self.footage.set_alias(path, &local);
+        self.layer_cache.clear();
     }
 
     pub fn live_active(&self) -> bool {
@@ -88,6 +182,10 @@ impl Session {
         self.project = Arc::new(p);
         self.revision += 1;
         self.live.seen = Some(self.project.clone());
+        // O desfazer guarda fotos do projeto: depois de uma alteração de colega, desfazer o passo
+        // anterior apagaria o trabalho dele. O histórico local recomeça daqui.
+        self.history.undo.clear();
+        self.history.redo.clear();
 
         Ok(())
     }
@@ -98,14 +196,14 @@ impl Session {
             return Err(err("comando não permitido na colaboração"));
         }
         let local = self.state.clone();
-        let undo_len = self.history.undo.len();
         if let Some(state) = ctx.get("state").and_then(|s| serde_json::from_value::<EditorState>(s.clone()).ok()) {
             self.state = state;
         }
         self.live.applying = true;
         let r = self.execute(cmd, params.clone());
         self.live.applying = false;
-        self.history.undo.truncate(undo_len);
+        self.history.undo.clear();
+        self.history.redo.clear();
         self.state = local;
         self.live.seen = Some(self.project.clone());
 
@@ -180,7 +278,8 @@ mod tests {
         a.execute("layer.newSolid", json!({"name": "Logo", "width": 100, "height": 100})).unwrap();
         sync(&mut a, &mut b);
         assert_eq!(a.live_digest().unwrap(), b.live_digest().unwrap());
-        assert_eq!(b.history.undo.len(), b_undo, "o desfazer de B não ganha os passos de A");
+        assert!(b.history.undo.is_empty(), "o desfazer de B não ganha os passos de A (e recomeça)");
+        let _ = b_undo;
 
         a.execute("edit.undo", json!({})).unwrap();
         sync(&mut a, &mut b);
