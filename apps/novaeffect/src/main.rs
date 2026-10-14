@@ -128,18 +128,19 @@ fn main() -> eframe::Result {
     // feed the compatibility report.
     novaeffect_engine::logging::install();
     novaeffect_engine::logging::install_panic_hook();
-    let Args { control_port, files, demo, home } = match parse_args(std::env::args().skip(1).filter(|arg| !novaeffect_ui_egui::live_ui::is_invite_arg(arg)), std::env::var("NOVAEFFECT_CONTROL_PORT")) {
-        Ok(Some(args)) => args,
-        Ok(None) => {
-            println!("novaeffect {}", env!("CARGO_PKG_VERSION"));
-            return Ok(());
-        }
-        // Before the session log, preferences and the window: nothing has started yet.
-        Err(e) => {
-            eprintln!("novaeffect: {e}");
-            std::process::exit(1);
-        }
-    };
+    let Args { control_port, files, demo, home } =
+        match parse_args(std::env::args().skip(1).filter(|arg| !novaeffect_ui_egui::live_ui::is_invite_arg(arg)), std::env::var("NOVAEFFECT_CONTROL_PORT")) {
+            Ok(Some(args)) => args,
+            Ok(None) => {
+                println!("novaeffect {}", env!("CARGO_PKG_VERSION"));
+                return Ok(());
+            }
+            // Before the session log, preferences and the window: nothing has started yet.
+            Err(e) => {
+                eprintln!("novaeffect: {e}");
+                std::process::exit(1);
+            }
+        };
     // The session log lives in the settings folder (`Logs/novaeffect.log`, the previous two runs
     // kept): a launch from the Dock or a menu has no terminal. Opened after the arguments, so
     // `--version` leaves no file behind; records logged until now are written to it first.
