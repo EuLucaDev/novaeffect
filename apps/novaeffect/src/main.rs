@@ -419,6 +419,10 @@ impl eframe::App for Desktop {
     }
 
     fn ui(&mut self, ui: &mut egui::Ui, frame: &mut eframe::Frame) {
+        #[cfg(not(target_arch = "wasm32"))]
+        if !novaeffect_ui_egui::account_ui::gate(ui, "novaeffect") {
+            return;
+        }
         self.app.ui(ui, frame);
         self.window.frame(ui.ctx(), self.app.session.config.as_deref());
         if !self.drawn {

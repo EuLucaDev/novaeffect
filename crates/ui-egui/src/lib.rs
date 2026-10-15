@@ -7,6 +7,9 @@
 
 #![deny(clippy::unwrap_used, clippy::expect_used, clippy::panic, clippy::unimplemented, clippy::todo, clippy::unreachable)]
 
+#[cfg(not(target_arch = "wasm32"))]
+pub use nova_account_ui as account_ui;
+
 pub mod audio;
 pub mod automation;
 pub mod bench;
