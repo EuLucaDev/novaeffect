@@ -46,13 +46,50 @@ pub const WINDOW_GRAPHICS: &[(&str, &str)] = &[("Automatic", "auto"), ("OpenGL (
 pub const APPEARANCE_MODES: &[(&str, &str)] = &[("Sync with System", "auto"), ("Dark", "dark"), ("Light", "light")];
 
 /// The dark family of themes: (label, `appearance.darkTheme` value).
-pub const DARK_THEMES: &[(&str, &str)] = &[("Dark", "dark"), ("Darker", "darker")];
+pub const DARK_THEMES: &[(&str, &str)] = &[
+    ("Dark", "dark"),
+    ("Darker", "darker"),
+    ("Pro (Dark)", "pro"),
+    ("Pro (Medium Gray)", "proMedium"),
+    ("Studio (Dark)", "studio"),
+    ("Solarized Dark", "solarizedDark"),
+    ("Adwaita (Dark)", "adwaitaDark"),
+    ("Breeze Dark", "breezeDark"),
+    ("Soft Dark", "softDark"),
+];
 
 /// The light family of themes: (label, `appearance.lightTheme` value).
-pub const LIGHT_THEMES: &[(&str, &str)] = &[("Light", "light")];
+pub const LIGHT_THEMES: &[(&str, &str)] = &[
+    ("Light", "light"),
+    ("Pro (Light Gray)", "proLightGray"),
+    ("Pro (Light)", "proLight"),
+    ("Studio (Light)", "studioLight"),
+    ("Classic", "classic"),
+    ("Adwaita (Light)", "adwaita"),
+    ("Breeze Light", "breezeLight"),
+    ("Soft Light", "softLight"),
+];
 
 /// Every theme (the legacy single-theme `appearance.theme`).
-pub const THEMES: &[(&str, &str)] = &[("Dark", "dark"), ("Darker", "darker"), ("Light", "light")];
+pub const THEMES: &[(&str, &str)] = &[
+    ("Dark", "dark"),
+    ("Darker", "darker"),
+    ("Light", "light"),
+    ("Pro (Dark)", "pro"),
+    ("Pro (Medium Gray)", "proMedium"),
+    ("Studio (Dark)", "studio"),
+    ("Solarized Dark", "solarizedDark"),
+    ("Adwaita (Dark)", "adwaitaDark"),
+    ("Breeze Dark", "breezeDark"),
+    ("Soft Dark", "softDark"),
+    ("Pro (Light Gray)", "proLightGray"),
+    ("Pro (Light)", "proLight"),
+    ("Studio (Light)", "studioLight"),
+    ("Classic", "classic"),
+    ("Adwaita (Light)", "adwaita"),
+    ("Breeze Light", "breezeLight"),
+    ("Soft Light", "softLight"),
+];
 
 /// The settings whose value must be one of their choices.
 fn choices(key: &str) -> Option<&'static [(&'static str, &'static str)]> {

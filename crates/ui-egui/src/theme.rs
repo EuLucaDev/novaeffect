@@ -15,6 +15,8 @@ pub enum ThemeKind {
     Dark,
     Darker,
     Light,
+    /// One of the Nova Foods suite themes (Nova Photo's fourteen, from `nova-themes`).
+    Suite(nova_themes::ThemeKind),
 }
 
 impl ThemeKind {
@@ -23,7 +25,7 @@ impl ThemeKind {
             "dark" | "default" => Some(ThemeKind::Dark),
             "darker" | "darkest" => Some(ThemeKind::Darker),
             "light" => Some(ThemeKind::Light),
-            _ => None,
+            _ => nova_themes::ThemeKind::from_name(s).map(ThemeKind::Suite),
         }
     }
 
@@ -33,11 +35,16 @@ impl ThemeKind {
             ThemeKind::Dark => "dark",
             ThemeKind::Darker => "darker",
             ThemeKind::Light => "light",
+            ThemeKind::Suite(kind) => kind.id(),
         }
     }
 
     pub fn is_light(self) -> bool {
-        self == ThemeKind::Light
+        match self {
+            ThemeKind::Light => true,
+            ThemeKind::Suite(kind) => !kind.is_dark(),
+            _ => false,
+        }
     }
 }
 
@@ -184,6 +191,7 @@ impl Tokens {
             gradients: true,
         };
         match kind {
+            ThemeKind::Suite(suite) => Tokens::for_suite(suite),
             ThemeKind::Dark => dark,
             ThemeKind::Darker => Tokens {
                 app_bg: Color32::from_rgb(0x08, 0x08, 0x08),
@@ -260,6 +268,45 @@ impl Tokens {
     /// Theme tokens for the current settings: theme, UI brightness and label colours.
     /// The tokens for theme `kind` (resolved from the appearance mode) with the rest of the
     /// Appearance settings: brightness, label colours, gradients.
+    /// A suite theme paints the chrome (header, panels, fields, rows, text, accent); the
+    /// timeline graph, keyframes, cache bars and label colours keep Nova Effect's own.
+    pub fn for_suite(suite: nova_themes::ThemeKind) -> Tokens {
+        let p = suite.palette();
+        let base = Tokens::for_kind(if suite.is_dark() { ThemeKind::Dark } else { ThemeKind::Light });
+        let c = |x: nova_themes::Rgba| Color32::from_rgba_unmultiplied(x[0], x[1], x[2], x[3]);
+        Tokens {
+            kind: ThemeKind::Suite(suite),
+            app_bg: c(p.dock),
+            header_bg: c(p.chrome),
+            panel_bg: c(p.card),
+            tab_text: c(p.text_dim),
+            tab_text_active: c(p.text),
+            focus: c(p.accent),
+            accent: c(p.accent),
+            accent_hover: c(nova_themes::mix(p.accent, [255, 255, 255, 255], 0.12)),
+            text: c(p.text),
+            text_dim: c(p.text_dim),
+            text_faint: c(p.text_faint),
+            icon: c(p.icon),
+            icon_active: c(p.text),
+            hover: c(p.hover),
+            pressed: c(p.pressed),
+            field_bg: c(p.field),
+            field_border: c(p.field_border),
+            separator: c(p.separator),
+            row: c(p.card),
+            row_alt: c(nova_themes::mix(p.card, p.text, 0.03)),
+            row_selected: c(p.row_selected),
+            hot_text: c(p.accent),
+            pasteboard: c(p.canvas),
+            fx_header: c(p.dock),
+            fx_header_active: c(p.pressed),
+            radius: p.radius,
+            radius_sm: p.radius_sm,
+            ..base
+        }
+    }
+
     pub fn from_prefs(p: &novaeffect_engine::prefs::Prefs, kind: ThemeKind) -> Tokens {
         let mut t = Tokens::for_kind(kind).with_brightness(p.appearance.brightness as f32);
         for (i, l) in novaeffect_color::Label::ALL.iter().enumerate() {
