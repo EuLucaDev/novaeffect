@@ -10,6 +10,7 @@ rust-version.workspace = true
 workspace = true
 
 [dependencies]
+craft-docpath = { workspace = true }
 novaeffect-time = { workspace = true }
 novaeffect-color = { workspace = true }
 novaeffect-keyframe = { workspace = true }

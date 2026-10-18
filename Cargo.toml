@@ -12,6 +12,8 @@ rust-version = "1.95"
 repository = "https://github.com/EuLucaDev/novaeffect"
 
 [workspace.dependencies]
+craft-pdf = { path = "vendor/novafoods-libs-ca50d63b77/crates/pdf", default-features = false, features = ["read"] }
+craft-docpath = { path = "vendor/novafoods-libs-82a24b006e/crates/docpath" }
 # internal
 novaeffect-time = { path = "crates/time" }
 novaeffect-geom = { path = "crates/geom" }
@@ -92,6 +94,9 @@ novafilm-av1 = { path = "vendor/novafilm-2c5ba7a726/crates/av1" }
 novafilm-interchange = { path = "vendor/novafilm-2c5ba7a726/crates/interchange" }
 novafilm-project = { path = "vendor/novafilm-2c5ba7a726/crates/project" }
 novafilm-geom = { path = "vendor/novafilm-2c5ba7a726/crates/geom" }
+# The symphonia novafilm-codecs already builds, named only to turn on its AIFF reader: the pinned
+# rev enables wav alone (NovaFilm main enables aiff too). Drop it when the pin moves past that.
+symphonia = { version = "0.5.5", default-features = false, features = ["aiff"] }
 
 # gpu (the same wgpu eframe / egui-wgpu use)
 wgpu = { version = "30.0.1", features = ["fragile-send-sync-non-atomic-wasm"] }
@@ -205,3 +210,6 @@ opt-level = 3
 [profile.release]
 lto = "thin"
 codegen-units = 1
+
+[patch.crates-io]
+hayro-syntax = { path = "vendor/novafoods-libs-ca50d63b77/vendor/hayro-syntax" }

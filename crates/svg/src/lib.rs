@@ -6,6 +6,7 @@
 
 #![deny(clippy::unwrap_used, clippy::expect_used, clippy::panic, clippy::unimplemented, clippy::todo, clippy::unreachable)]
 
+mod bounds;
 mod color;
 mod pathdata;
 mod raster;
@@ -106,6 +107,28 @@ pub struct Stroke {
     pub miter: f64,
     /// Dash array and offset.
     pub dash: Option<(Vec<f64>, f64)>,
+}
+
+impl Stroke {
+    fn style(&self) -> novaeffect_path::StrokeStyle {
+        novaeffect_path::StrokeStyle {
+            width: self.width,
+            cap: match self.cap {
+                Cap::Butt => novaeffect_path::Cap::Butt,
+                Cap::Round => novaeffect_path::Cap::Round,
+                Cap::Square => novaeffect_path::Cap::Square,
+            },
+            join: match self.join {
+                Join::Miter => novaeffect_path::Join::Miter,
+                Join::Round => novaeffect_path::Join::Round,
+                Join::Bevel => novaeffect_path::Join::Bevel,
+            },
+            miter: self.miter,
+            dash: self.dash.clone(),
+            taper: None,
+            wave: None,
+        }
+    }
 }
 
 /// Shape geometry in its user space (basic shapes are kept so they can become parametric shape

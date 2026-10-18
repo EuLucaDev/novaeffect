@@ -54,7 +54,7 @@ pub fn summary(app: &NovaeffectApp, ctx: &egui::Context, item: ItemId) -> Option
         .name("ec-waveform".into())
         .spawn(move || {
             use novaeffect_engine::media_cache;
-            let file = cache.and_then(|d| media_cache::peaks_path(&d, &f.path, BINS_PER_SEC));
+            let file = cache.filter(|_| !f.missing).and_then(|d| media_cache::peaks_path(&d, &f.path, BINS_PER_SEC));
             let peaks = match file.as_deref().and_then(media_cache::load_peaks) {
                 Some(p) => p,
                 None => {

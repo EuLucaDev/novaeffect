@@ -10,6 +10,7 @@ rust-version.workspace = true
 workspace = true
 
 [dependencies]
+craft-docpath = { workspace = true }
 novaeffect-time = { workspace = true }
 novaeffect-project = { workspace = true }
 novaeffect-raster = { workspace = true }
@@ -24,6 +25,8 @@ novafilm-isobmff = { workspace = true }
 novafilm-frame = { workspace = true }
 novafilm-color = { workspace = true }
 novafilm-time = { workspace = true }
+# AIFF import (#1428): enables the aiff reader of novafilm-codecs' symphonia.
+symphonia = { workspace = true }
 exr = { workspace = true }
 gif = { workspace = true }
 image = { workspace = true, features = ["gif", "webp", "tiff", "bmp", "exr", "tga", "hdr"] }

@@ -405,23 +405,7 @@ fn draw_shape(s: &Shape, m: Affine, opacity: f64, dst: &mut Image) {
         paint(dst, &cov, fill, (opacity * s.fill_opacity) as f32, m, bbox);
     }
     if let Some(st) = &s.stroke {
-        let style = novaeffect_path::StrokeStyle {
-            width: st.width,
-            cap: match st.cap {
-                crate::Cap::Butt => novaeffect_path::Cap::Butt,
-                crate::Cap::Round => novaeffect_path::Cap::Round,
-                crate::Cap::Square => novaeffect_path::Cap::Square,
-            },
-            join: match st.join {
-                crate::Join::Miter => novaeffect_path::Join::Miter,
-                crate::Join::Round => novaeffect_path::Join::Round,
-                crate::Join::Bevel => novaeffect_path::Join::Bevel,
-            },
-            miter: st.miter,
-            dash: st.dash.clone(),
-            taper: None,
-            wave: None,
-        };
+        let style = st.style();
         let cov = novaeffect_path::stroke_coverage(std::slice::from_ref(&path), &style, &mat3(m), w, h);
         paint(dst, &cov, &st.paint, (opacity * st.opacity) as f32, m, bbox);
     }
