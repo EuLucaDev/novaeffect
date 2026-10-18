@@ -2741,7 +2741,7 @@ dependencies = [
 
 [[package]]
 name = "novaeffect"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "cpal",
  "eframe",
@@ -2766,7 +2766,7 @@ dependencies = [
 
 [[package]]
 name = "novaeffect-automation"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "image",
  "novaeffect-engine",
@@ -2778,14 +2778,14 @@ dependencies = [
 
 [[package]]
 name = "novaeffect-av1enc"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "novafilm-av1",
 ]
 
 [[package]]
 name = "novaeffect-cli"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "cpu-time",
  "image",
@@ -2801,7 +2801,7 @@ dependencies = [
 
 [[package]]
 name = "novaeffect-color"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "proptest",
  "serde",
@@ -2809,7 +2809,7 @@ dependencies = [
 
 [[package]]
 name = "novaeffect-effects"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "log",
  "novaeffect-color",
@@ -2826,7 +2826,7 @@ dependencies = [
 
 [[package]]
 name = "novaeffect-engine"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "craft-docpath",
  "exr",
@@ -2860,7 +2860,7 @@ dependencies = [
 
 [[package]]
 name = "novaeffect-export"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "gif",
  "image",
@@ -2890,7 +2890,7 @@ dependencies = [
 
 [[package]]
 name = "novaeffect-expr"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "boa_engine",
  "novaeffect-color",
@@ -2907,7 +2907,7 @@ dependencies = [
 
 [[package]]
 name = "novaeffect-geom"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "proptest",
  "serde",
@@ -2915,7 +2915,7 @@ dependencies = [
 
 [[package]]
 name = "novaeffect-gpu"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "bytemuck",
  "js-sys",
@@ -2937,14 +2937,14 @@ dependencies = [
 
 [[package]]
 name = "novaeffect-hevcenc"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "novafilm-hevc",
 ]
 
 [[package]]
 name = "novaeffect-host"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "exr",
  "gif",
@@ -2969,7 +2969,7 @@ dependencies = [
 
 [[package]]
 name = "novaeffect-interchange"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "novaeffect-color",
  "novaeffect-keyframe",
@@ -2988,7 +2988,7 @@ dependencies = [
 
 [[package]]
 name = "novaeffect-keyframe"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "novaeffect-color",
  "novaeffect-geom",
@@ -3000,7 +3000,7 @@ dependencies = [
 
 [[package]]
 name = "novaeffect-lottie"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "craft-docpath",
  "kurbo",
@@ -3018,7 +3018,7 @@ dependencies = [
 
 [[package]]
 name = "novaeffect-media"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "craft-docpath",
  "exr",
@@ -3047,7 +3047,7 @@ dependencies = [
 
 [[package]]
 name = "novaeffect-model"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "image",
  "miniz_oxide 0.8.9",
@@ -3059,14 +3059,14 @@ dependencies = [
 
 [[package]]
 name = "novaeffect-opusenc"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "novafilm-opus",
 ]
 
 [[package]]
 name = "novaeffect-path"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "kurbo",
  "linesweeper",
@@ -3078,7 +3078,7 @@ dependencies = [
 
 [[package]]
 name = "novaeffect-pdf"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "craft-pdf",
  "image",
@@ -3094,7 +3094,7 @@ dependencies = [
 
 [[package]]
 name = "novaeffect-plugin"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "novaeffect-effects",
  "novaeffect-keyframe",
@@ -3106,7 +3106,7 @@ dependencies = [
 
 [[package]]
 name = "novaeffect-project"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "novaeffect-color",
  "novaeffect-geom",
@@ -3119,14 +3119,14 @@ dependencies = [
 
 [[package]]
 name = "novaeffect-psd"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "miniz_oxide 0.8.9",
 ]
 
 [[package]]
 name = "novaeffect-raster"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "novaeffect-color",
  "novaeffect-geom",
@@ -3135,7 +3135,7 @@ dependencies = [
 
 [[package]]
 name = "novaeffect-render"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "kurbo",
  "log",
@@ -3157,7 +3157,7 @@ dependencies = [
 
 [[package]]
 name = "novaeffect-script"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "boa_engine",
  "novaeffect-engine",
@@ -3174,7 +3174,7 @@ dependencies = [
 
 [[package]]
 name = "novaeffect-segment"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "miniz_oxide 0.8.9",
  "ndarray",
@@ -3183,7 +3183,7 @@ dependencies = [
 
 [[package]]
 name = "novaeffect-svg"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "kurbo",
  "novaeffect-geom",
@@ -3195,7 +3195,7 @@ dependencies = [
 
 [[package]]
 name = "novaeffect-text"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "harfrust",
  "kurbo",
@@ -3207,7 +3207,7 @@ dependencies = [
 
 [[package]]
 name = "novaeffect-time"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "proptest",
  "serde",
@@ -3215,7 +3215,7 @@ dependencies = [
 
 [[package]]
 name = "novaeffect-track"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "novaeffect-raster",
  "novaeffect-segment",
@@ -3227,7 +3227,7 @@ dependencies = [
 
 [[package]]
 name = "novaeffect-ui-egui"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "eframe",
  "egui",
@@ -3262,11 +3262,11 @@ dependencies = [
 
 [[package]]
 name = "novaeffect-vp9enc"
-version = "0.13.0"
+version = "0.14.0"
 
 [[package]]
 name = "novaeffect-web"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "eframe",
  "egui",
@@ -6918,7 +6918,7 @@ checksum = "e450f9b2ed1dff33c94c12589a87338689467b9c4f5d8a5710bd09a847d2c8a7"
 
 [[package]]
 name = "xtask"
-version = "0.13.0"
+version = "0.14.0"
 dependencies = [
  "serde_json",
 ]
